@@ -1,3 +1,3 @@
-import { LoginFormProps } from '../types/types';
+import { LoginFormProps, LayoutProps } from '../types/types';
 
-export type { LoginFormProps };
+export type { LoginFormProps, LayoutProps };

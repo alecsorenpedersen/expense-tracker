@@ -44,3 +44,19 @@ export const CardContainer = styled(Card)({
 export const Title = styled(Typography)({
 	marginBottom: '10px',
 });
+
+export const LayoutMain = styled('div')(({ theme }) => ({
+	display: 'flex',
+	flex: '1 1 auto',
+	maxWidth: '100%',
+	[theme.breakpoints.up('lg')]: {
+		paddingLeft: 300,
+	},
+}));
+
+export const LayoutContainer = styled('div')({
+	display: 'flex',
+	flex: '1 1 auto',
+	flexDirection: 'column',
+	width: '100%',
+});

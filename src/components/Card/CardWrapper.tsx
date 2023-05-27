@@ -5,7 +5,7 @@ import { CardContent } from '@mui/material';
 interface CardProps {
 	children: ReactNode;
 }
-const Card = ({ children }: CardProps) => {
+const MainCard = ({ children }: CardProps) => {
 	return (
 		<CardContainer>
 			<CardContent>{children}</CardContent>
@@ -13,4 +13,4 @@ const Card = ({ children }: CardProps) => {
 	);
 };
 
-export default Card;
+export default MainCard;
