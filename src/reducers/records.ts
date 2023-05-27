@@ -1,4 +1,3 @@
-// reducers/records.ts
 import { ADD_RECORD, RecordActionTypes } from '../actions';
 
 const initialState = JSON.parse(localStorage.getItem('records') || '[]');

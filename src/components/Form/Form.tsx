@@ -1,32 +1,20 @@
 import { Button, MenuItem } from '@mui/material';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
-import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { Title } from '../../styles/theme';
 import Card from '../Card/CardWrapper';
 import { addRecord } from '../../actions';
-
-interface FormValues {
-	date: string;
-	info: string;
-	value: string;
-	type: 'income' | 'expense';
-}
+import { FormValues } from '../../types';
+import { recordValidationSchema } from '../../schema/validation';
 
 const initialValues: FormValues = {
 	date: '',
 	info: '',
 	value: '',
 	type: 'expense',
+	category: 'food',
 };
-
-const validationSchema = Yup.object({
-	date: Yup.string().required('Required'),
-	info: Yup.string().required('Required'),
-	value: Yup.number().required('Required'),
-	type: Yup.string().oneOf(['income', 'expense']).required('Required'),
-});
 
 const EntryForm = () => {
 	const dispatch = useDispatch();
@@ -35,7 +23,13 @@ const EntryForm = () => {
 		values: FormValues,
 		{ resetForm }: FormikHelpers<FormValues>,
 	) => {
-		dispatch(addRecord({ ...values, value: Number(values.value) }));
+		dispatch(
+			addRecord({
+				...values,
+				value: Number(values.value),
+				category: values.category,
+			}),
+		);
 		resetForm();
 	};
 
@@ -44,7 +38,7 @@ const EntryForm = () => {
 			<Title variant='h5'>New Record</Title>
 			<Formik
 				initialValues={initialValues}
-				validationSchema={validationSchema}
+				validationSchema={recordValidationSchema}
 				onSubmit={onSubmit}>
 				{() => (
 					<Form>
@@ -77,16 +71,29 @@ const EntryForm = () => {
 						<ErrorMessage name='value' component='div' />
 						<Field
 							component={TextField}
+							select
 							fullWidth
-							margin='normal'
+							name='type'
 							label='Type'
 							variant='outlined'
-							name='type'
-							select>
+							margin='normal'>
 							<MenuItem value='income'>Income</MenuItem>
 							<MenuItem value='expense'>Expense</MenuItem>
 						</Field>
 						<ErrorMessage name='type' component='div' />
+						<Field
+							component={TextField}
+							select
+							fullWidth
+							name='category'
+							label='Category'
+							variant='outlined'
+							margin='normal'>
+							<MenuItem value='food'>Food</MenuItem>
+							<MenuItem value='education'>Education</MenuItem>
+							<MenuItem value='travel'>Travel</MenuItem>
+							<MenuItem value='investments'>Investments</MenuItem>
+						</Field>
 						<Button variant='contained' color='primary' fullWidth type='submit'>
 							Add Record
 						</Button>

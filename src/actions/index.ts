@@ -1,4 +1,3 @@
-// actions/index.ts
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 
 interface AddCategoryAction {
@@ -15,6 +14,7 @@ export interface AddRecordAction {
 		info: string;
 		value: number;
 		type: 'income' | 'expense';
+		category: string;
 	};
 }
 
@@ -29,13 +29,8 @@ export const addCategory = (category: string): CategoryActionTypes => ({
 export const addRecord = (
 	record: AddRecordAction['payload'],
 ): RecordActionTypes => {
-	// Retrieve the records array from localStorage
 	const storedRecords = JSON.parse(localStorage.getItem('records') || '[]');
-
-	// Add the new record to the array
 	storedRecords.push(record);
-
-	// Store the updated array in localStorage
 	localStorage.setItem('records', JSON.stringify(storedRecords));
 
 	return {
@@ -43,3 +38,17 @@ export const addRecord = (
 		payload: record,
 	};
 };
+
+export const SET_BUDGET = 'SET_BUDGET';
+
+interface SetBudgetAction {
+	type: typeof SET_BUDGET;
+	payload: number;
+}
+
+export type BudgetActionTypes = SetBudgetAction;
+
+export const setBudget = (budget: number): BudgetActionTypes => ({
+	type: SET_BUDGET,
+	payload: budget,
+});

@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText } from '@mui/material';
+import { List, ListItem, ListItemText, Typography } from '@mui/material';
 import { AddRecordAction } from '../../actions';
 import useDashboard from '../../hooks/useForm';
 import { Title } from '../../styles/theme';
@@ -14,7 +14,17 @@ const ExpenseList = () => {
 				{records.map((record: AddRecordAction['payload'], index: number) => (
 					<ListItem key={index}>
 						<ListItemText
-							primary={`${record.date} - ${record.info} - ${record.type} - ${record.value}`}
+							primary={
+								<>
+									<Typography
+										component='span'
+										style={{
+											color: record.type === 'income' ? 'green' : 'red',
+										}}>
+										{`${record.date} - ${record.info} - ${record.type} - ${record.value}-${record.category}`}
+									</Typography>
+								</>
+							}
 						/>
 					</ListItem>
 				))}

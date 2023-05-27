@@ -1,8 +1,11 @@
 import { Grid } from '@mui/material';
 import EntryForm from '../Form/Form';
 import ExpenseList from '../List/List';
-import PieChartComponent from '../Charts/PieChart';
 import Layout from '../../layout/Layout';
+import SetBudgetForm from '../BudgetForm/SetBudgetForm';
+import SummaryChart from '../Charts/SummaryChart';
+import CategoryPieChart from '../Charts/CategoryChart';
+import BudgetTrackerChart from '../Charts/BudgetTracker';
 
 const Dashboard = () => {
 	return (
@@ -12,13 +15,19 @@ const Dashboard = () => {
 					<EntryForm />
 				</Grid>
 				<Grid item xs={12} md={3}>
+					<SetBudgetForm />
+				</Grid>
+				<Grid item xs={12} md={3}>
 					<ExpenseList />
 				</Grid>
 				<Grid item xs={12} md={3}>
-					<PieChartComponent />
+					<SummaryChart />
 				</Grid>
 				<Grid item xs={12} md={3}>
-					<PieChartComponent />
+					<BudgetTrackerChart />
+				</Grid>
+				<Grid item xs={12} md={3}>
+					<CategoryPieChart />
 				</Grid>
 			</Grid>
 		</Layout>

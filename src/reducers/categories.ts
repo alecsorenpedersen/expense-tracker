@@ -1,4 +1,3 @@
-// reducers/categories.ts
 import { ADD_CATEGORY, CategoryActionTypes } from '../actions';
 
 const categories = (state: string[] = [], action: CategoryActionTypes) => {

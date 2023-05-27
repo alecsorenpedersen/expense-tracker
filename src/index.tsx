@@ -10,7 +10,31 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { theme } from './styles/theme';
 
-const store = createStore(rootReducer);
+const saveToLocalStorage = (state: any) => {
+	try {
+		const serialisedState = JSON.stringify(state);
+		localStorage.setItem('persistedState', serialisedState);
+	} catch (e) {
+		console.warn(e);
+	}
+};
+
+const loadFromLocalStorage = () => {
+	try {
+		const serialisedState = localStorage.getItem('persistedState');
+		if (serialisedState === null) return undefined;
+		return JSON.parse(serialisedState);
+	} catch (e) {
+		console.warn(e);
+		return undefined;
+	}
+};
+
+const persistedState = loadFromLocalStorage();
+
+const store = createStore(rootReducer, persistedState);
+
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement,

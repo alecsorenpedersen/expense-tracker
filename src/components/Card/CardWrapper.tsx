@@ -1,10 +1,7 @@
-import { ReactNode } from 'react';
 import { CardContainer } from '../../styles/theme';
 import { CardContent } from '@mui/material';
+import { CardProps } from '../../types';
 
-interface CardProps {
-	children: ReactNode;
-}
 const MainCard = ({ children }: CardProps) => {
 	return (
 		<CardContainer>
