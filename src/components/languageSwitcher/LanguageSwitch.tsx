@@ -17,7 +17,10 @@ const LanguageSwitcher = () => {
 	};
 
 	return (
-		<select value={i18n.language} onChange={handleChange}>
+		<select
+			data-testid='language-switcher'
+			value={i18n.language}
+			onChange={handleChange}>
 			{languageOptions.map((option) => (
 				<option key={option.value} value={option.value}>
 					{option.label}

@@ -8,12 +8,9 @@ import { useTranslation } from 'react-i18next';
 const Login = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
-	const handleSubmit = (values: { username: string; password: string }) => {
-		if (values.username === 'admin' && values.password === 'password') {
-			navigate('/dashboard');
-		} else {
-			alert('Invalid credentials!');
-		}
+
+	const handleSubmit = () => {
+		navigate('/dashboard');
 	};
 
 	return (

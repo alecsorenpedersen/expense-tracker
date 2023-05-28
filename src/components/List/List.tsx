@@ -69,8 +69,8 @@ const ExpenseList = () => {
 
 	return (
 		<Card>
-			<Button onClick={exportToExcel}>Export to Excel</Button>
 			<Title variant='h5'>{t('transactions')}</Title>
+			<Button onClick={exportToExcel}>Export to Excel</Button>
 			<TableContainer>
 				<Table>
 					<TableHead>

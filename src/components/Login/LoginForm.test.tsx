@@ -7,9 +7,9 @@ describe('LoginForm', () => {
 	it('submits the form with provided values', async () => {
 		render(<LoginForm onSubmit={mockSubmit} />);
 
-		const usernameInput = screen.getByLabelText('Username');
-		const passwordInput = screen.getByLabelText('Password');
-		const submitButton = screen.getByRole('button', { name: 'Login' });
+		const usernameInput = screen.getByLabelText('username');
+		const passwordInput = screen.getByLabelText('password');
+		const submitButton = screen.getByRole('button', { name: 'login' });
 
 		fireEvent.change(usernameInput, { target: { value: 'testuser' } });
 		fireEvent.change(passwordInput, { target: { value: 'testpassword' } });
@@ -32,7 +32,7 @@ describe('LoginForm', () => {
 	it('disables the submit button while submitting', async () => {
 		render(<LoginForm onSubmit={mockSubmit} />);
 
-		const submitButton = screen.getByRole('button', { name: 'Login' });
+		const submitButton = screen.getByRole('button', { name: 'login' });
 
 		fireEvent.click(submitButton);
 

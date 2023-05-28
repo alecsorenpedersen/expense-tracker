@@ -11,7 +11,11 @@ const SignOutButton = () => {
 	};
 
 	return (
-		<Button variant='contained' color='secondary' onClick={handleSignOut}>
+		<Button
+			data-testid='sign-out-button'
+			variant='contained'
+			color='secondary'
+			onClick={handleSignOut}>
 			{t('signOut')}
 		</Button>
 	);

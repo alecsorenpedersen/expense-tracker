@@ -23,7 +23,7 @@ describe('SetBudgetForm', () => {
 				);
 			});
 
-			expect(screen.getByLabelText('Budget')).toBeInTheDocument();
+			expect(screen.getByLabelText('budget')).toBeInTheDocument();
 		});
 	});
 
@@ -37,8 +37,8 @@ describe('SetBudgetForm', () => {
 				);
 			});
 
-			const inputField = screen.getByLabelText('Budget') as HTMLInputElement;
-			const submitButton = screen.getByRole('button', { name: 'Set Budget' });
+			const inputField = screen.getByLabelText('budget') as HTMLInputElement;
+			const submitButton = screen.getByRole('button', { name: 'setBudget' });
 
 			act(() => {
 				fireEvent.change(inputField, { target: { value: '1000' } });
@@ -59,7 +59,7 @@ describe('SetBudgetForm', () => {
 				);
 			});
 
-			const submitButton = screen.getByRole('button', { name: 'Set Budget' });
+			const submitButton = screen.getByRole('button', { name: 'setBudget' });
 
 			await act(async () => {
 				fireEvent.click(submitButton);
@@ -79,7 +79,7 @@ describe('SetBudgetForm', () => {
 				);
 			});
 
-			const submitButton = screen.getByRole('button', { name: 'Set Budget' });
+			const submitButton = screen.getByRole('button', { name: 'setBudget' });
 
 			await act(async () => {
 				fireEvent.click(submitButton);
@@ -97,8 +97,8 @@ describe('SetBudgetForm', () => {
 				);
 			});
 
-			const inputField = screen.getByLabelText('Budget') as HTMLInputElement;
-			const submitButton = screen.getByRole('button', { name: 'Set Budget' });
+			const inputField = screen.getByLabelText('budget') as HTMLInputElement;
+			const submitButton = screen.getByRole('button', { name: 'setBudget' });
 
 			act(() => {
 				fireEvent.change(inputField, { target: { value: '-500' } });
