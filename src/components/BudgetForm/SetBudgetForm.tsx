@@ -1,6 +1,5 @@
 import { Button } from '@mui/material';
 import { Formik, Form, FormikHelpers } from 'formik';
-
 import { useDispatch } from 'react-redux';
 import { Title } from '../../styles/theme';
 import { setBudget } from '../../actions';
@@ -12,33 +11,34 @@ const initialValues = {
 	budget: '',
 };
 
+const onSubmit = (
+	values: typeof initialValues,
+	{ resetForm }: FormikHelpers<typeof initialValues>,
+	dispatch: ReturnType<typeof useDispatch>,
+) => {
+	dispatch(setBudget(Number(values.budget)));
+	resetForm();
+};
+
 const SetBudgetForm = () => {
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
 
-	const onSubmit = (
-		values: typeof initialValues,
-		{ resetForm }: FormikHelpers<typeof initialValues>,
-	) => {
-		dispatch(setBudget(Number(values.budget)));
-		resetForm();
-	};
-
 	return (
 		<>
-			<Title variant='h5'> {t('setBudget')}</Title>
+			<Title variant='h5'>{t('setBudget')}</Title>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={budgetValidationSchema}
-				onSubmit={onSubmit}>
-				{() => (
-					<Form>
-						<CurrencyField name='budget' label={t('budget')} />
-						<Button variant='contained' color='primary' fullWidth type='submit'>
-							{t('setBudget')}
-						</Button>
-					</Form>
-				)}
+				onSubmit={(values, formikHelpers) =>
+					onSubmit(values, formikHelpers, dispatch)
+				}>
+				<Form>
+					<CurrencyField name='budget' label={t('budget')} />
+					<Button variant='contained' color='primary' fullWidth type='submit'>
+						{t('setBudget')}
+					</Button>
+				</Form>
 			</Formik>
 		</>
 	);

@@ -1,4 +1,4 @@
-import { Button, MenuItem } from '@mui/material';
+import { Button } from '@mui/material';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import { useDispatch } from 'react-redux';
@@ -9,20 +9,29 @@ import { FormValues } from '../../types';
 import { recordValidationSchema } from '../../schema/validation';
 import 'react-datepicker/dist/react-datepicker.css';
 import CurrencyField from '../CurrencyField/CurrencyField';
-
 import { useTranslation } from 'react-i18next';
-
-const initialValues: FormValues = {
-	date: '',
-	info: '',
-	value: '',
-	type: 'expense',
-	category: 'food',
-};
+import SelectField from '../SelectField/SelectField';
+import { INITIAL_VALUES } from './constants';
+import MainCard from '../Card/CardWrapper';
 
 const EntryForm = () => {
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
+
+	const CATEGORIES = [
+		{ value: 'food', label: t('food') },
+		{ value: 'entertainment', label: t('entertainment') },
+		{ value: 'travel', label: t('travel') },
+		{ value: 'education', label: t('education') },
+		{ value: 'investment', label: t('investment') },
+		{ value: 'wages', label: t('wages') },
+		{ value: 'other', label: t('other') },
+	];
+
+	const TYPES = [
+		{ value: 'income', label: t('income') },
+		{ value: 'expense', label: t('expense') },
+	];
 
 	const onSubmit = (
 		values: FormValues,
@@ -31,7 +40,7 @@ const EntryForm = () => {
 		dispatch(
 			addRecord({
 				...values,
-				value: Number(values.value), // Convert the value to a number
+				value: Number(values.value),
 				category: values.category,
 			}),
 		);
@@ -39,68 +48,43 @@ const EntryForm = () => {
 	};
 
 	return (
-		<Card data-testid='entry-form'>
+		<MainCard data-testid='entry-form'>
 			<Title variant='h5'>{t('newTransaction')}</Title>
 			<Formik
-				initialValues={initialValues}
+				initialValues={INITIAL_VALUES}
 				validationSchema={recordValidationSchema}
 				onSubmit={onSubmit}>
-				{() => (
-					<Form>
-						<Field
-							component={TextField}
-							type='date'
-							fullWidth
-							margin='normal'
-							variant='outlined'
-							name='date'
-						/>
-
-						<Field
-							component={TextField}
-							fullWidth
-							margin='normal'
-							label={t('description')}
-							variant='outlined'
-							name='info'
-						/>
-						<CurrencyField name='value' label='Amount' />
-						<Field
-							component={TextField}
-							select
-							fullWidth
-							name='type'
-							label={t('type')}
-							variant='outlined'
-							margin='normal'>
-							<MenuItem value='income'> {t('income')}</MenuItem>
-							<MenuItem value='expense'> {t('expense')}</MenuItem>
-						</Field>
-						<Field
-							component={TextField}
-							select
-							fullWidth
-							name='category'
-							label={t('category')}
-							variant='outlined'
-							margin='normal'>
-							<MenuItem value='food'> {t('food')}</MenuItem>
-							<MenuItem value='entertainment'>
-								{t('entertainment')} (Netfilx ect..)
-							</MenuItem>
-							<MenuItem value='travel'> {t('travel')}</MenuItem>
-							<MenuItem value='education'> {t('education')}</MenuItem>
-							<MenuItem value='other'> {t('other')}</MenuItem>
-							<MenuItem value='investments'> {t('investment')}</MenuItem>
-							<MenuItem value='wages'> {t('wages')}</MenuItem>
-						</Field>
-						<Button variant='contained' color='primary' fullWidth type='submit'>
-							{t('addTransaction')}
-						</Button>
-					</Form>
-				)}
+				<Form>
+					<Field
+						label={t('date')}
+						component={TextField}
+						type='date'
+						fullWidth
+						margin='normal'
+						variant='outlined'
+						name='date'
+					/>
+					<Field
+						component={TextField}
+						fullWidth
+						margin='normal'
+						label={t('description')}
+						variant='outlined'
+						name='info'
+					/>
+					<CurrencyField name='value' label='Amount' />
+					<SelectField name='type' label={t('type')} items={TYPES} />
+					<SelectField
+						name='category'
+						label={t('category')}
+						items={CATEGORIES}
+					/>
+					<Button variant='contained' color='primary' fullWidth type='submit'>
+						{t('addTransaction')}
+					</Button>
+				</Form>
 			</Formik>
-		</Card>
+		</MainCard>
 	);
 };
 
