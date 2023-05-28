@@ -9,7 +9,7 @@ export type LayoutProps = {
 };
 
 export interface FormValues {
-	date: string;
+	date: any;
 	info: string;
 	value: string;
 	type: 'income' | 'expense';

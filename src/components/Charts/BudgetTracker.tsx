@@ -4,16 +4,19 @@ import Chart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { RootState } from '../../reducers';
 import MainCard from '../Card/CardWrapper';
+import { Title } from '../../styles/theme';
+import SetBudgetForm from '../BudgetForm/SetBudgetForm';
 
 const BudgetTrackerChart = () => {
 	const records = useSelector((state: RootState) => state.records);
+	const budgetGoal = useSelector((state: RootState) => state.budget);
 
 	const totalExpenses = records
 		.filter((record: Record) => record.type === 'expense')
 		.reduce((sum: number, record: Record) => sum + record.value, 0);
 
-	const budgetGoal = 9000;
-	const percentageSpent = Math.min((totalExpenses / budgetGoal) * 100, 100);
+	const percentageSpent =
+		budgetGoal > 0 ? Math.min((totalExpenses / budgetGoal) * 100, 100) : 0;
 
 	const series = [percentageSpent];
 	const options: ApexOptions = {
@@ -43,7 +46,9 @@ const BudgetTrackerChart = () => {
 
 	return (
 		<MainCard>
+			<Title variant='h5'>Budget: {budgetGoal}</Title>
 			<Chart options={options} series={series} type='radialBar' />
+			<SetBudgetForm />
 		</MainCard>
 	);
 };

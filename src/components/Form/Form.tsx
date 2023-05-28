@@ -8,6 +8,10 @@ import { addRecord } from '../../actions';
 import { FormValues } from '../../types';
 import { recordValidationSchema } from '../../schema/validation';
 
+import React from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 const initialValues: FormValues = {
 	date: '',
 	info: '',
@@ -44,9 +48,9 @@ const EntryForm = () => {
 					<Form>
 						<Field
 							component={TextField}
+							type='date'
 							fullWidth
 							margin='normal'
-							label='Date'
 							variant='outlined'
 							name='date'
 						/>

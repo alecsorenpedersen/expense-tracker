@@ -11,3 +11,9 @@ export const recordValidationSchema = Yup.object({
 	value: Yup.number().required('Required'),
 	type: Yup.string().oneOf(['income', 'expense']).required('Required'),
 });
+
+export const budgetValidationSchema = Yup.object({
+	budget: Yup.number()
+		.required('Budget is required')
+		.positive('Budget must be a positive number'),
+});

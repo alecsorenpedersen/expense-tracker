@@ -39,6 +39,8 @@ export const theme = createTheme({
 
 export const CardContainer = styled(Card)({
 	marginTop: '10%',
+	height: '100%',
+	overflow: 'auto',
 });
 
 export const Title = styled(Typography)({

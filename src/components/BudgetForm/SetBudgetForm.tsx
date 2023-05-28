@@ -3,15 +3,8 @@ import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import { useDispatch } from 'react-redux';
 import { Title } from '../../styles/theme';
-import Card from '../Card/CardWrapper';
 import { setBudget } from '../../actions';
-import * as Yup from 'yup';
-
-const validationSchema = Yup.object({
-	budget: Yup.number()
-		.required('Budget is required')
-		.positive('Budget must be a positive number'),
-});
+import { budgetValidationSchema } from '../../schema/validation';
 
 const initialValues = {
 	budget: '',
@@ -29,11 +22,11 @@ const SetBudgetForm = () => {
 	};
 
 	return (
-		<Card>
+		<>
 			<Title variant='h5'>Set Budget</Title>
 			<Formik
 				initialValues={initialValues}
-				validationSchema={validationSchema}
+				validationSchema={budgetValidationSchema}
 				onSubmit={onSubmit}>
 				{() => (
 					<Form>
@@ -52,7 +45,7 @@ const SetBudgetForm = () => {
 					</Form>
 				)}
 			</Formik>
-		</Card>
+		</>
 	);
 };
 

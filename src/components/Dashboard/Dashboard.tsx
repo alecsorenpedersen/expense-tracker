@@ -10,21 +10,19 @@ import BudgetTrackerChart from '../Charts/BudgetTracker';
 const Dashboard = () => {
 	return (
 		<Layout>
-			<Grid container spacing={2} style={{ padding: '20px' }}>
+			<Grid container spacing={3} style={{ padding: '20px' }}>
 				<Grid item xs={12} md={3}>
 					<EntryForm />
-				</Grid>
-				<Grid item xs={12} md={3}>
-					<SetBudgetForm />
 				</Grid>
 				<Grid item xs={12} md={3}>
 					<ExpenseList />
 				</Grid>
 				<Grid item xs={12} md={3}>
-					<SummaryChart />
-				</Grid>
-				<Grid item xs={12} md={3}>
 					<BudgetTrackerChart />
+				</Grid>
+
+				<Grid item xs={12} md={3}>
+					<SummaryChart />
 				</Grid>
 				<Grid item xs={12} md={3}>
 					<CategoryPieChart />
