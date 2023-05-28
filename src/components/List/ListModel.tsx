@@ -10,24 +10,26 @@ import {
 import { AddRecordAction } from '../../actions';
 import { formatCurrency } from '../../utils/utils';
 import { RecordDetailDialogProps } from '../../types';
-import { t } from 'i18next';
-
-const detailFields = [
-	{ field: 'date', displayName: t('date') },
-	{ field: 'info', displayName: t('info') },
-	{ field: 'type', displayName: t('type') },
-	{ field: 'value', displayName: t('amount') },
-	{ field: 'category', displayName: t('category') },
-];
+import { useTranslation } from 'react-i18next';
 
 const RecordDetailDialog = ({
 	open,
 	record,
 	onClose,
 }: RecordDetailDialogProps) => {
+	const { t } = useTranslation();
+
+	const detailFields = [
+		{ field: 'date', displayName: t('date') },
+		{ field: 'info', displayName: t('info') },
+		{ field: 'type', displayName: t('type') },
+		{ field: 'value', displayName: t('amount') },
+		{ field: 'category', displayName: t('category') },
+	];
+
 	return (
 		<Dialog open={open} onClose={onClose}>
-			<DialogTitle>Record Details</DialogTitle>
+			<DialogTitle>{t('transactionDetails')}</DialogTitle>
 			<DialogContent>
 				{record &&
 					detailFields.map(({ field, displayName }) => (
@@ -46,7 +48,7 @@ const RecordDetailDialog = ({
 					))}
 			</DialogContent>
 			<DialogActions>
-				<Button onClick={onClose}>Close</Button>
+				<Button onClick={onClose}>{t('close')}</Button>
 			</DialogActions>
 		</Dialog>
 	);

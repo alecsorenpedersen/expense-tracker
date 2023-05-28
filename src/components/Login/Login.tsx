@@ -3,9 +3,10 @@ import { Title } from '../../styles/theme';
 import LoginForm from './LoginForm';
 import Card from '../Card/CardWrapper';
 import { useNavigate } from 'react-router-dom';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const handleSubmit = (values: { username: string; password: string }) => {
 		if (values.username === 'admin' && values.password === 'password') {

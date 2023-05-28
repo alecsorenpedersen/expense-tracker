@@ -6,9 +6,10 @@ import { RootState } from '../../reducers';
 import MainCard from '../Card/CardWrapper';
 import { Title } from '../../styles/theme';
 import SetBudgetForm from '../BudgetForm/SetBudgetForm';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const BudgetTrackerChart = () => {
+	const { t } = useTranslation();
 	const records = useSelector((state: RootState) => state.records);
 	const budgetGoal = useSelector((state: RootState) => state.budget);
 

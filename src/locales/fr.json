@@ -1,8 +1,9 @@
 {
 	"expenseTracker": "Suivi des Dépenses",
 	"newTransaction": "Nouvelle Transaction",
-	"addTransaction": "Ajouter Transaction",
+	"addTransaction": "Ajouter une Transaction",
 	"transactions": "Transactions",
+	"transactionDetails": "Détails de la Transaction",
 	"description": "Description",
 	"amount": "Montant",
 	"expense": "Dépense",
@@ -21,10 +22,11 @@
 	"moreInfo": "Cliquez sur les éléments pour plus d'informations",
 	"budget": "Budget",
 	"setBudget": "Définir le Budget",
-	"summary": "Résumé des Revenus et des Dépenses",
+	"summary": "Résumé des Revenus et Dépenses",
 	"categories": "Catégories",
 	"signOut": "Se Déconnecter",
 	"login": "Connexion",
 	"username": "Nom d'Utilisateur",
-	"password": "Mot de Passe"
+	"password": "Mot de Passe",
+	"close": "Fermer"
 }

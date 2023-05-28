@@ -1,8 +1,9 @@
 import { Button } from '@mui/material';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 const SignOutButton = () => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	const handleSignOut = () => {

@@ -1,9 +1,10 @@
 import { useCategoryTotals } from '../../hooks/useSelectors';
 import { ApexOptions } from 'apexcharts';
 import ChartWrapper from './ChartWrapper';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const CategoryPieChart = () => {
+	const { t } = useTranslation();
 	const categoryTotals = useCategoryTotals();
 	const categories = Object.keys(categoryTotals);
 	const totals = Object.values(categoryTotals);

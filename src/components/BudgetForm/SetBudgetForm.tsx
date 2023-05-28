@@ -6,13 +6,14 @@ import { Title } from '../../styles/theme';
 import { setBudget } from '../../actions';
 import { budgetValidationSchema } from '../../schema/validation';
 import CurrencyField from '../CurrencyField/CurrencyField';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
 	budget: '',
 };
 
 const SetBudgetForm = () => {
+	const { t } = useTranslation();
 	const dispatch = useDispatch();
 
 	const onSubmit = (

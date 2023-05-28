@@ -1,9 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { useTotalIncome, useTotalExpenses } from '../../hooks/useSelectors';
 import { formatCurrency } from '../../utils/utils';
 import ChartWrapper from './ChartWrapper';
-import { t } from 'i18next';
 
 const SummaryChart = () => {
+	const { t } = useTranslation();
 	const totalIncome = useTotalIncome();
 	const totalExpenses = useTotalExpenses();
 
@@ -38,7 +39,7 @@ const SummaryChart = () => {
 			},
 		},
 		xaxis: {
-			categories: ['Income', 'Expenses'],
+			categories: [t('income'), t('expense')],
 			labels: {
 				formatter: (value: string) => formatCurrency(Number(value)),
 			},

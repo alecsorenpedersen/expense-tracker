@@ -9,7 +9,8 @@ import { FormValues } from '../../types';
 import { recordValidationSchema } from '../../schema/validation';
 import 'react-datepicker/dist/react-datepicker.css';
 import CurrencyField from '../CurrencyField/CurrencyField';
-import { t } from 'i18next';
+
+import { useTranslation } from 'react-i18next';
 
 const initialValues: FormValues = {
 	date: '',
@@ -20,6 +21,7 @@ const initialValues: FormValues = {
 };
 
 const EntryForm = () => {
+	const { t } = useTranslation();
 	const dispatch = useDispatch();
 
 	const onSubmit = (

@@ -6,7 +6,6 @@ import {
 	TableHead,
 	TableRow,
 	TableCell,
-	TextField,
 } from '@mui/material';
 import { AddRecordAction } from '../../actions';
 import useDashboard from '../../hooks/useForm';
@@ -14,20 +13,22 @@ import { Title } from '../../styles/theme';
 import Card from '../Card/CardWrapper';
 import RecordDetailDialog from './ListModel';
 import { formatCurrency, formatDate } from '../../utils/utils';
-import { t } from 'i18next';
 
-const columns = [
-	{ id: 'date', label: t('date'), minWidth: 50, align: 'left' },
-	{ id: 'info', label: t('info'), minWidth: 100, align: 'left' },
-	{ id: 'value', label: t('amount'), minWidth: 50, align: 'left' },
-];
+import { useTranslation } from 'react-i18next';
 
 const ExpenseList = () => {
+	const { t } = useTranslation();
 	const { records } = useDashboard();
 	const [open, setOpen] = useState(false);
 	const [currentRecord, setCurrentRecord] = useState<
 		AddRecordAction['payload'] | null
 	>(null);
+
+	const columns = [
+		{ id: 'date', label: t('date'), minWidth: 50, align: 'left' },
+		{ id: 'info', label: t('info'), minWidth: 100, align: 'left' },
+		{ id: 'value', label: t('amount'), minWidth: 50, align: 'left' },
+	];
 
 	const handleClickOpen = (record: AddRecordAction['payload']) => {
 		setCurrentRecord(record);

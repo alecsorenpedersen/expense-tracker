@@ -1,8 +1,9 @@
 {
-	"expenseTracker": "Registro de Gastos",
+	"expenseTracker": "Rastreador de Gastos",
 	"newTransaction": "Nueva Transacción",
 	"addTransaction": "Agregar Transacción",
 	"transactions": "Transacciones",
+	"transactionDetails": "Detalles de la Transacción",
 	"description": "Descripción",
 	"amount": "Cantidad",
 	"expense": "Gasto",
@@ -26,5 +27,6 @@
 	"signOut": "Cerrar Sesión",
 	"login": "Iniciar Sesión",
 	"username": "Nombre de Usuario",
-	"password": "Contraseña"
+	"password": "Contraseña",
+	"close": "Cerrar"
 }

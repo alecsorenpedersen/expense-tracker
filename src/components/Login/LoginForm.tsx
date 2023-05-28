@@ -3,9 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { TextField } from 'formik-mui';
 import { loginValidationSchema } from '../../schema/validation';
 import { LoginFormProps } from '../../types';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
+	const { t } = useTranslation();
 	return (
 		<Formik
 			initialValues={{
