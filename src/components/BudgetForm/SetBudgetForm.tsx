@@ -1,10 +1,11 @@
-import { Button } from '@mui/material';
+import { Button, InputAdornment } from '@mui/material';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import { useDispatch } from 'react-redux';
 import { Title } from '../../styles/theme';
 import { setBudget } from '../../actions';
 import { budgetValidationSchema } from '../../schema/validation';
+import CurrencyField from '../CurrencyField/CurrencyField';
 
 const initialValues = {
 	budget: '',
@@ -30,15 +31,7 @@ const SetBudgetForm = () => {
 				onSubmit={onSubmit}>
 				{() => (
 					<Form>
-						<Field
-							component={TextField}
-							fullWidth
-							margin='normal'
-							label='Budget'
-							variant='outlined'
-							name='budget'
-							type='number'
-						/>
+						<CurrencyField name='budget' label='Budget' />
 						<Button variant='contained' color='primary' fullWidth type='submit'>
 							Set Budget
 						</Button>

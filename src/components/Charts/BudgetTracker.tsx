@@ -46,7 +46,7 @@ const BudgetTrackerChart = () => {
 
 	return (
 		<MainCard>
-			<Title variant='h5'>Budget: {budgetGoal}</Title>
+			<Title variant='h5'>Budget: £{budgetGoal}</Title>
 			<Chart options={options} series={series} type='radialBar' />
 			<SetBudgetForm />
 		</MainCard>

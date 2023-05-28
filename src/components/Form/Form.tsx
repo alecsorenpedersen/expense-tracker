@@ -1,4 +1,4 @@
-import { Button, MenuItem } from '@mui/material';
+import { Button, InputAdornment, MenuItem } from '@mui/material';
 import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import { useDispatch } from 'react-redux';
@@ -7,10 +7,8 @@ import Card from '../Card/CardWrapper';
 import { addRecord } from '../../actions';
 import { FormValues } from '../../types';
 import { recordValidationSchema } from '../../schema/validation';
-
-import React from 'react';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import CurrencyField from '../CurrencyField/CurrencyField';
 
 const initialValues: FormValues = {
 	date: '',
@@ -30,7 +28,7 @@ const EntryForm = () => {
 		dispatch(
 			addRecord({
 				...values,
-				value: Number(values.value),
+				value: Number(values.value), // Convert the value to a number
 				category: values.category,
 			}),
 		);
@@ -54,7 +52,7 @@ const EntryForm = () => {
 							variant='outlined'
 							name='date'
 						/>
-						<ErrorMessage name='date' component='div' />
+
 						<Field
 							component={TextField}
 							fullWidth
@@ -63,16 +61,7 @@ const EntryForm = () => {
 							variant='outlined'
 							name='info'
 						/>
-						<ErrorMessage name='info' component='div' />
-						<Field
-							component={TextField}
-							fullWidth
-							margin='normal'
-							label='Value'
-							variant='outlined'
-							name='value'
-						/>
-						<ErrorMessage name='value' component='div' />
+						<CurrencyField name='value' label='Amount' />
 						<Field
 							component={TextField}
 							select
@@ -84,7 +73,6 @@ const EntryForm = () => {
 							<MenuItem value='income'>Income</MenuItem>
 							<MenuItem value='expense'>Expense</MenuItem>
 						</Field>
-						<ErrorMessage name='type' component='div' />
 						<Field
 							component={TextField}
 							select
@@ -94,9 +82,14 @@ const EntryForm = () => {
 							variant='outlined'
 							margin='normal'>
 							<MenuItem value='food'>Food</MenuItem>
+							<MenuItem value='entertainment'>
+								Entertainment (Netfilx ect..)
+							</MenuItem>
+							<MenuItem value='travel'>Travel</MenuItem>
 							<MenuItem value='education'>Education</MenuItem>
 							<MenuItem value='travel'>Travel</MenuItem>
 							<MenuItem value='investments'>Investments</MenuItem>
+							<MenuItem value='wages'>Wages</MenuItem>
 						</Field>
 						<Button variant='contained' color='primary' fullWidth type='submit'>
 							Add Record

@@ -35,6 +35,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
 					/>
 					<ErrorMessage name='password' component='div' />
 					<Button
+						name='loginButton'
 						variant='contained'
 						color='primary'
 						fullWidth

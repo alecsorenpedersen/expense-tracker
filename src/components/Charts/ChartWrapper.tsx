@@ -1,21 +1,9 @@
 import Chart from 'react-apexcharts';
-import { ApexOptions } from 'apexcharts';
 import MainCard from '../Card/CardWrapper';
 import { Title } from '../../styles/theme';
+import { ChartWrapperProps } from '../../types';
 
-type ChartWrapperProps = {
-	options: ApexOptions;
-	series: any[];
-	type: 'bar' | 'line' | 'radialBar' | 'pie';
-	title: string;
-};
-
-const ChartWrapper: React.FC<ChartWrapperProps> = ({
-	options,
-	series,
-	type,
-	title,
-}) => {
+const ChartWrapper = ({ options, series, type, title }: ChartWrapperProps) => {
 	return (
 		<MainCard>
 			<Title variant='h5'>{title}</Title>

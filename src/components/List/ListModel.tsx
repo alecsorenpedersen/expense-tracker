@@ -8,12 +8,8 @@ import {
 	Typography,
 } from '@mui/material';
 import { AddRecordAction } from '../../actions';
-
-interface RecordDetailDialogProps {
-	open: boolean;
-	record: AddRecordAction['payload'] | null;
-	onClose: () => void;
-}
+import { formatCurrency } from '../../utils/utils';
+import { RecordDetailDialogProps } from '../../types';
 
 const detailFields = [
 	{ field: 'date', displayName: 'Date' },
@@ -23,11 +19,11 @@ const detailFields = [
 	{ field: 'category', displayName: 'Category' },
 ];
 
-const RecordDetailDialog: React.FC<RecordDetailDialogProps> = ({
+const RecordDetailDialog = ({
 	open,
 	record,
 	onClose,
-}) => {
+}: RecordDetailDialogProps) => {
 	return (
 		<Dialog open={open} onClose={onClose}>
 			<DialogTitle>Record Details</DialogTitle>
@@ -37,7 +33,13 @@ const RecordDetailDialog: React.FC<RecordDetailDialogProps> = ({
 						<DialogContentText key={field}>
 							<Typography variant='body1' color='textPrimary'>
 								<strong>{displayName}:</strong>{' '}
-								{record[field as keyof AddRecordAction['payload']]}
+								{field === 'value'
+									? formatCurrency(
+											record[
+												field as keyof AddRecordAction['payload']
+											] as number,
+									  )
+									: record[field as keyof AddRecordAction['payload']]}
 							</Typography>
 						</DialogContentText>
 					))}

@@ -6,12 +6,14 @@ import {
 	TableHead,
 	TableRow,
 	TableCell,
+	TextField,
 } from '@mui/material';
 import { AddRecordAction } from '../../actions';
 import useDashboard from '../../hooks/useForm';
 import { Title } from '../../styles/theme';
 import Card from '../Card/CardWrapper';
 import RecordDetailDialog from './ListModel';
+import { formatCurrency, formatDate } from '../../utils/utils';
 
 const columns = [
 	{ id: 'date', label: 'Date', minWidth: 50, align: 'left' },
@@ -41,6 +43,7 @@ const ExpenseList = () => {
 			<TableContainer>
 				<Table>
 					<TableHead>
+						<Title>Click items for more info</Title>
 						<TableRow>
 							{columns.map((columns) => (
 								<TableCell
@@ -59,14 +62,23 @@ const ExpenseList = () => {
 								key={index}
 								sx={{
 									'&:last-child td, &:last-child th': { border: 0 },
-									backgroundColor: record.type === 'income' ? 'green' : 'red',
+									backgroundColor:
+										record.type === 'income' ? '#33dd5e' : '#DD3333',
 									color: 'white',
 									cursor: 'pointer',
 									wordBreak: 'break-word',
 								}}
 								onClick={() => handleClickOpen(record)}>
 								{columns.map((column) => (
-									<TableCell key={column.id}>{record[column.id]}</TableCell>
+									<TableCell key={column.id}>
+										<span style={{ color: 'white' }}>
+											{column.id === 'value'
+												? formatCurrency(record[column.id])
+												: column.id === 'date'
+												? formatDate(record[column.id])
+												: record[column.id]}
+										</span>
+									</TableCell>
 								))}
 							</TableRow>
 						))}
