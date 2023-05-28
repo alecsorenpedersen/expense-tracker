@@ -73,8 +73,14 @@ const EntryForm = () => {
 						name='info'
 					/>
 					<CurrencyField name='value' label='Amount' />
-					<SelectField name='type' label={t('type')} items={TYPES} />
 					<SelectField
+						data-testid='type'
+						name='type'
+						label={t('type')}
+						items={TYPES}
+					/>
+					<SelectField
+						data-testid='category'
 						name='category'
 						label={t('category')}
 						items={CATEGORIES}

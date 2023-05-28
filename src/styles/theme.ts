@@ -47,6 +47,11 @@ export const Title = styled(Typography)({
 	marginBottom: '10px',
 });
 
+export const Header = styled(Typography)({
+	align: 'center',
+	fontSize: '1.5rem',
+});
+
 export const LayoutMain = styled('div')({
 	display: 'flex',
 	flex: '1 1 auto',

@@ -1,4 +1,4 @@
-import { LayoutContainer, LayoutMain } from '../styles/theme';
+import { Header, LayoutContainer, LayoutMain } from '../styles/theme';
 import { LayoutProps } from '../types';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';

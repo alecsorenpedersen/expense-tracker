@@ -5,11 +5,17 @@ import Layout from '../../layout/Layout';
 import SummaryChart from '../Charts/SummaryChart';
 import CategoryPieChart from '../Charts/CategoryChart';
 import BudgetTrackerChart from '../Charts/BudgetTracker';
+import { Header } from '../../styles/theme';
 
 const Dashboard = () => {
 	return (
 		<Layout>
 			<Grid container spacing={3} style={{ padding: '20px' }}>
+				<Grid item xs={12} md={12}>
+					<Header variant='h1' align='center' paddingBottom='-100px'>
+						Your Expenses Dashboard
+					</Header>
+				</Grid>
 				<Grid item xs={12} md={3}>
 					<EntryForm />
 				</Grid>

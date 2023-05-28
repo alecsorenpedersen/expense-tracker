@@ -28,7 +28,7 @@ const RecordDetailDialog = ({
 	];
 
 	return (
-		<Dialog open={open} onClose={onClose}>
+		<Dialog open={open} onClose={onClose} data-testid='record-detail-dialog'>
 			<DialogTitle>{t('transactionDetails')}</DialogTitle>
 			<DialogContent>
 				{record &&
