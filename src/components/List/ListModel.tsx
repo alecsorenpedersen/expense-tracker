@@ -10,13 +10,14 @@ import {
 import { AddRecordAction } from '../../actions';
 import { formatCurrency } from '../../utils/utils';
 import { RecordDetailDialogProps } from '../../types';
+import { t } from 'i18next';
 
 const detailFields = [
-	{ field: 'date', displayName: 'Date' },
-	{ field: 'info', displayName: 'Information' },
-	{ field: 'type', displayName: 'Type' },
-	{ field: 'value', displayName: 'Value' },
-	{ field: 'category', displayName: 'Category' },
+	{ field: 'date', displayName: t('date') },
+	{ field: 'info', displayName: t('info') },
+	{ field: 'type', displayName: t('type') },
+	{ field: 'value', displayName: t('amount') },
+	{ field: 'category', displayName: t('category') },
 ];
 
 const RecordDetailDialog = ({

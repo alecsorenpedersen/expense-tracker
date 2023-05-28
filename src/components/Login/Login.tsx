@@ -3,6 +3,7 @@ import { Title } from '../../styles/theme';
 import LoginForm from './LoginForm';
 import Card from '../Card/CardWrapper';
 import { useNavigate } from 'react-router-dom';
+import { t } from 'i18next';
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Login = () => {
 		<Grid container justifyContent='center'>
 			<Grid item xs={12} sm={8} md={6} lg={4}>
 				<Card>
-					<Title variant='h5'>Login</Title>
+					<Title variant='h5'>{t('login')}</Title>
 					<LoginForm onSubmit={handleSubmit} />
 				</Card>
 			</Grid>

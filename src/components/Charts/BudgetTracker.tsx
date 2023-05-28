@@ -6,6 +6,7 @@ import { RootState } from '../../reducers';
 import MainCard from '../Card/CardWrapper';
 import { Title } from '../../styles/theme';
 import SetBudgetForm from '../BudgetForm/SetBudgetForm';
+import { t } from 'i18next';
 
 const BudgetTrackerChart = () => {
 	const records = useSelector((state: RootState) => state.records);
@@ -46,7 +47,9 @@ const BudgetTrackerChart = () => {
 
 	return (
 		<MainCard>
-			<Title variant='h5'>Budget: £{budgetGoal}</Title>
+			<Title variant='h5'>
+				{t('budget')}: £{budgetGoal}
+			</Title>
 			<Chart options={options} series={series} type='radialBar' />
 			<SetBudgetForm />
 		</MainCard>

@@ -14,11 +14,12 @@ import { Title } from '../../styles/theme';
 import Card from '../Card/CardWrapper';
 import RecordDetailDialog from './ListModel';
 import { formatCurrency, formatDate } from '../../utils/utils';
+import { t } from 'i18next';
 
 const columns = [
-	{ id: 'date', label: 'Date', minWidth: 50, align: 'left' },
-	{ id: 'info', label: 'Info', minWidth: 100, align: 'left' },
-	{ id: 'value', label: 'Value', minWidth: 50, align: 'left' },
+	{ id: 'date', label: t('date'), minWidth: 50, align: 'left' },
+	{ id: 'info', label: t('info'), minWidth: 100, align: 'left' },
+	{ id: 'value', label: t('amount'), minWidth: 50, align: 'left' },
 ];
 
 const ExpenseList = () => {
@@ -39,11 +40,11 @@ const ExpenseList = () => {
 
 	return (
 		<Card>
-			<Title variant='h5'>Records</Title>
+			<Title variant='h5'>{t('transactions')}</Title>
 			<TableContainer>
 				<Table>
 					<TableHead>
-						<Title>Click items for more info</Title>
+						<Title>{t('moreInfo')}</Title>
 						<TableRow>
 							{columns.map((columns) => (
 								<TableCell

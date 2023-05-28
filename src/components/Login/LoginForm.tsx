@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { TextField } from 'formik-mui';
 import { loginValidationSchema } from '../../schema/validation';
 import { LoginFormProps } from '../../types';
+import { t } from 'i18next';
 
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
 	return (
@@ -20,7 +21,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
 						fullWidth
 						margin='normal'
 						name='username'
-						label='Username'
+						label={t('username')}
 						variant='outlined'
 					/>
 					<ErrorMessage name='username' component='div' />
@@ -29,7 +30,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
 						fullWidth
 						margin='normal'
 						name='password'
-						label='Password'
+						label={t('password')}
 						variant='outlined'
 						type='password'
 					/>
@@ -41,7 +42,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
 						fullWidth
 						type='submit'
 						disabled={isSubmitting}>
-						Login
+						{t('login')}
 					</Button>
 				</Form>
 			)}

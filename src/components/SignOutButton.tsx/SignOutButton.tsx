@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { t } from 'i18next';
 import { useNavigate } from 'react-router-dom';
 
 const SignOutButton = () => {
@@ -10,7 +11,7 @@ const SignOutButton = () => {
 
 	return (
 		<Button variant='contained' color='secondary' onClick={handleSignOut}>
-			Sign Out
+			{t('signOut')}
 		</Button>
 	);
 };

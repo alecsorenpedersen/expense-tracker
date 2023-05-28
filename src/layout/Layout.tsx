@@ -3,14 +3,16 @@ import { LayoutProps } from '../types';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import SignOutButton from '../components/SignOutButton.tsx/SignOutButton';
+import { useTranslation } from 'react-i18next';
 
 const Layout = ({ children }: LayoutProps) => {
+	const { t } = useTranslation();
 	return (
 		<>
 			<AppBar position='static'>
 				<Toolbar>
 					<Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
-						Expense Tracker
+						{t('expenseTracker')}
 					</Typography>
 					<Box sx={{ flexGrow: 1 }} />
 					<SignOutButton />

@@ -1,6 +1,7 @@
 import { useTotalIncome, useTotalExpenses } from '../../hooks/useSelectors';
 import { formatCurrency } from '../../utils/utils';
 import ChartWrapper from './ChartWrapper';
+import { t } from 'i18next';
 
 const SummaryChart = () => {
 	const totalIncome = useTotalIncome();
@@ -47,15 +48,6 @@ const SummaryChart = () => {
 				formatter: (value: number) => formatCurrency(value),
 			},
 		},
-		title: {
-			text: 'Income and Expenses Summary',
-			align: 'center' as const, // Modified line
-			style: {
-				fontSize: '20px',
-				fontWeight: 'bold',
-				color: '#263238',
-			},
-		},
 		grid: {
 			borderColor: '#f6f6f6',
 			row: {
@@ -69,7 +61,7 @@ const SummaryChart = () => {
 			options={options}
 			series={series}
 			type='bar'
-			title='Summary'
+			title={t('summary')}
 		/>
 	);
 };

@@ -1,6 +1,7 @@
 import { useCategoryTotals } from '../../hooks/useSelectors';
 import { ApexOptions } from 'apexcharts';
 import ChartWrapper from './ChartWrapper';
+import { t } from 'i18next';
 
 const CategoryPieChart = () => {
 	const categoryTotals = useCategoryTotals();
@@ -16,7 +17,7 @@ const CategoryPieChart = () => {
 			options={options}
 			series={series}
 			type='pie'
-			title='Categories'
+			title={t('categories')}
 		/>
 	);
 };

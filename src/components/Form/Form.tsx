@@ -1,5 +1,5 @@
-import { Button, InputAdornment, MenuItem } from '@mui/material';
-import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik';
+import { Button, MenuItem } from '@mui/material';
+import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import { useDispatch } from 'react-redux';
 import { Title } from '../../styles/theme';
@@ -9,6 +9,7 @@ import { FormValues } from '../../types';
 import { recordValidationSchema } from '../../schema/validation';
 import 'react-datepicker/dist/react-datepicker.css';
 import CurrencyField from '../CurrencyField/CurrencyField';
+import { t } from 'i18next';
 
 const initialValues: FormValues = {
 	date: '',
@@ -37,7 +38,7 @@ const EntryForm = () => {
 
 	return (
 		<Card>
-			<Title variant='h5'>New Record</Title>
+			<Title variant='h5'>{t('newTransaction')}</Title>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={recordValidationSchema}
@@ -57,7 +58,7 @@ const EntryForm = () => {
 							component={TextField}
 							fullWidth
 							margin='normal'
-							label='Description'
+							label={t('description')}
 							variant='outlined'
 							name='info'
 						/>
@@ -67,32 +68,32 @@ const EntryForm = () => {
 							select
 							fullWidth
 							name='type'
-							label='Type'
+							label={t('type')}
 							variant='outlined'
 							margin='normal'>
-							<MenuItem value='income'>Income</MenuItem>
-							<MenuItem value='expense'>Expense</MenuItem>
+							<MenuItem value='income'> {t('income')}</MenuItem>
+							<MenuItem value='expense'> {t('expense')}</MenuItem>
 						</Field>
 						<Field
 							component={TextField}
 							select
 							fullWidth
 							name='category'
-							label='Category'
+							label={t('category')}
 							variant='outlined'
 							margin='normal'>
-							<MenuItem value='food'>Food</MenuItem>
+							<MenuItem value='food'> {t('food')}</MenuItem>
 							<MenuItem value='entertainment'>
-								Entertainment (Netfilx ect..)
+								{t('entertainment')} (Netfilx ect..)
 							</MenuItem>
-							<MenuItem value='travel'>Travel</MenuItem>
-							<MenuItem value='education'>Education</MenuItem>
-							<MenuItem value='travel'>Travel</MenuItem>
-							<MenuItem value='investments'>Investments</MenuItem>
-							<MenuItem value='wages'>Wages</MenuItem>
+							<MenuItem value='travel'> {t('travel')}</MenuItem>
+							<MenuItem value='education'> {t('education')}</MenuItem>
+							<MenuItem value='other'> {t('other')}</MenuItem>
+							<MenuItem value='investments'> {t('investment')}</MenuItem>
+							<MenuItem value='wages'> {t('wages')}</MenuItem>
 						</Field>
 						<Button variant='contained' color='primary' fullWidth type='submit'>
-							Add Record
+							{t('addTransaction')}
 						</Button>
 					</Form>
 				)}
