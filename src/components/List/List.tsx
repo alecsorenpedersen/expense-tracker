@@ -6,6 +6,7 @@ import {
 	TableHead,
 	TableRow,
 	TableCell,
+	Button,
 } from '@mui/material';
 import { AddRecordAction } from '../../actions';
 import useDashboard from '../../hooks/useForm';
@@ -13,8 +14,18 @@ import { Title } from '../../styles/theme';
 import Card from '../Card/CardWrapper';
 import RecordDetailDialog from './ListModel';
 import { formatCurrency, formatDate } from '../../utils/utils';
-
 import { useTranslation } from 'react-i18next';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+
+// Detail fields for each record
+const detailFields = [
+	{ field: 'date', displayName: 'Date' },
+	{ field: 'info', displayName: 'Information' },
+	{ field: 'type', displayName: 'Type' },
+	{ field: 'value', displayName: 'Value' },
+	{ field: 'category', displayName: 'Category' },
+];
 
 const ExpenseList = () => {
 	const { t } = useTranslation();
@@ -39,21 +50,39 @@ const ExpenseList = () => {
 		setOpen(false);
 	};
 
+	const exportToExcel = () => {
+		const dataToDownload = records.map((record: any) => {
+			const updatedRecord = { ...record };
+			detailFields.forEach(({ field }) => {
+				updatedRecord[field] =
+					record[field as keyof AddRecordAction['payload']];
+			});
+			return updatedRecord;
+		});
+
+		const wb = XLSX.utils.book_new();
+		const ws = XLSX.utils.json_to_sheet(dataToDownload);
+		XLSX.utils.book_append_sheet(wb, ws, 'Records');
+		const buf = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+		saveAs(new Blob([buf]), 'records.xlsx');
+	};
+
 	return (
 		<Card>
+			<Button onClick={exportToExcel}>Export to Excel</Button>
 			<Title variant='h5'>{t('transactions')}</Title>
 			<TableContainer>
 				<Table>
 					<TableHead>
 						<Title>{t('moreInfo')}</Title>
 						<TableRow>
-							{columns.map((columns) => (
+							{columns.map((column) => (
 								<TableCell
-									key={columns.id}
+									key={column.id}
 									style={{
 										alignItems: 'center',
 									}}>
-									{columns.label}
+									{column.label}
 								</TableCell>
 							))}
 						</TableRow>
