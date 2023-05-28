@@ -47,7 +47,7 @@ const BudgetTrackerChart = () => {
 	};
 
 	return (
-		<MainCard>
+		<MainCard data-testid='budget-tracker-chart'>
 			<Title variant='h5'>
 				{t('budget')}: £{budgetGoal}
 			</Title>

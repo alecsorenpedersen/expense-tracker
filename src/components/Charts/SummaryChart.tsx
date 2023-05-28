@@ -63,6 +63,7 @@ const SummaryChart = () => {
 			series={series}
 			type='bar'
 			title={t('summary')}
+			data-testid='summary-chart'
 		/>
 	);
 };

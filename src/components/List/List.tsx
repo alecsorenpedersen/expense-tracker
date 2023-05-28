@@ -68,7 +68,7 @@ const ExpenseList = () => {
 	};
 
 	return (
-		<Card>
+		<Card data-testid='expense-list'>
 			<Title variant='h5'>{t('transactions')}</Title>
 			<Button onClick={exportToExcel}>Export to Excel</Button>
 			<TableContainer>

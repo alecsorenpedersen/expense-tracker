@@ -1,7 +1,4 @@
-import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { Button } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import SignOutButton from './SignOutButton';
 

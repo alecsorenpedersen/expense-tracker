@@ -15,6 +15,7 @@ const CategoryPieChart = () => {
 
 	return (
 		<ChartWrapper
+			data-testid='category-pie-chart'
 			options={options}
 			series={series}
 			type='pie'

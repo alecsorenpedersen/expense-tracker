@@ -12,7 +12,11 @@ const Layout = ({ children }: LayoutProps) => {
 		<>
 			<AppBar position='static'>
 				<Toolbar>
-					<Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
+					<Typography
+						variant='h5'
+						component='div'
+						sx={{ flexGrow: 1 }}
+						data-testid='app-title'>
 						{t('expenseTracker')}
 					</Typography>
 					<LanguageSwitcher />
@@ -20,8 +24,10 @@ const Layout = ({ children }: LayoutProps) => {
 					<SignOutButton />
 				</Toolbar>
 			</AppBar>
-			<LayoutMain>
-				<LayoutContainer>{children}</LayoutContainer>
+			<LayoutMain data-testid='layout-main'>
+				<LayoutContainer data-testid='layout-container'>
+					{children}
+				</LayoutContainer>
 			</LayoutMain>
 		</>
 	);

@@ -39,7 +39,7 @@ const EntryForm = () => {
 	};
 
 	return (
-		<Card>
+		<Card data-testid='entry-form'>
 			<Title variant='h5'>{t('newTransaction')}</Title>
 			<Formik
 				initialValues={initialValues}
