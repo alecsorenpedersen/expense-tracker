@@ -1,6 +1,5 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import LanguageSwitcher from './LanguageSwitch';
-import { useTranslation } from 'react-i18next';
 
 jest.mock('react-i18next', () => ({
 	...jest.requireActual('react-i18next'),
