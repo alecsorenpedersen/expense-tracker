@@ -34,7 +34,7 @@ const RecordDetailDialog = ({
 				{record &&
 					detailFields.map(({ field, displayName }) => (
 						<DialogContentText key={field}>
-							<Typography variant='body1' color='textPrimary'>
+							<Typography variant='body1' color='textPrimary' component='span'>
 								<strong>{displayName}:</strong>{' '}
 								{field === 'value'
 									? formatCurrency(

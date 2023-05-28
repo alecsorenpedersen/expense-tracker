@@ -74,19 +74,20 @@ const ExpenseList = () => {
 			<TableContainer>
 				<Table>
 					<TableHead>
-						<Title>{t('moreInfo')}</Title>
+						<TableRow>
+							<TableCell colSpan={columns.length}>
+								<Title>{t('moreInfo')}</Title>
+							</TableCell>
+						</TableRow>
 						<TableRow>
 							{columns.map((column) => (
-								<TableCell
-									key={column.id}
-									style={{
-										alignItems: 'center',
-									}}>
+								<TableCell key={column.id} style={{ alignItems: 'center' }}>
 									{column.label}
 								</TableCell>
 							))}
 						</TableRow>
 					</TableHead>
+
 					<TableBody>
 						{records.map((record: any, index: any) => (
 							<TableRow
