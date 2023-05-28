@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -38,10 +38,7 @@ const store = createStore(rootReducer, persistedState);
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
-const root = ReactDOM.createRoot(
-	document.getElementById('root') as HTMLElement,
-);
-root.render(
+ReactDOM.render(
 	<I18nextProvider i18n={i18n}>
 		<React.StrictMode>
 			<ThemeProvider theme={theme}>
@@ -52,5 +49,7 @@ root.render(
 			</ThemeProvider>
 		</React.StrictMode>
 	</I18nextProvider>,
+	document.getElementById('root'),
 );
+
 reportWebVitals();
