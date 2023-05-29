@@ -52,6 +52,12 @@ export interface RecordDetailDialogProps {
 	onClose: () => void;
 }
 
+export interface RecordDetailDialogTProps {
+	open: boolean;
+	record: Record | null;
+	onClose: () => void;
+}
+
 export interface SelectFieldProps {
 	name: string;
 	label: string;
