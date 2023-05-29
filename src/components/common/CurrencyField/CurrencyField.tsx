@@ -8,6 +8,7 @@ const CurrencyField = ({ name, label }: CurrencyFieldProps) => {
 
 	return (
 		<TextField
+			data-testid='value-input'
 			label={label}
 			error={meta.touched && !!meta.error}
 			helperText={meta.touched ? meta.error : ''}
@@ -29,6 +30,7 @@ const CurrencyField = ({ name, label }: CurrencyFieldProps) => {
 					},
 				},
 			}}
+			aria-label={`${label}-input`}
 		/>
 	);
 };

@@ -56,7 +56,9 @@ const EntryForm = () => {
 					data-testid='entry-form'>
 					<Form>
 						<Field
+							aria-label='date'
 							component={TextField}
+							as='input'
 							type='date'
 							fullWidth
 							margin='normal'
@@ -64,6 +66,7 @@ const EntryForm = () => {
 							name='date'
 						/>
 						<Field
+							aria-label='description-input'
 							component={TextField}
 							fullWidth
 							margin='normal'
@@ -72,18 +75,13 @@ const EntryForm = () => {
 							name='info'
 						/>
 						<CurrencyField name='value' label='Amount' />
+						<SelectField name='type' label={t('type')} items={TYPES} />
 						<SelectField
-							data-testid='type'
-							name='type'
-							label={t('type')}
-							items={TYPES}
-						/>
-						<SelectField
-							data-testid='category'
 							name='category'
 							label={t('category')}
 							items={CATEGORIES}
 						/>
+
 						<Button variant='contained' color='primary' fullWidth type='submit'>
 							{t('addTransaction')}
 						</Button>

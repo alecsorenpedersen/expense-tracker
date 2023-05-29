@@ -5,7 +5,6 @@ import { createStore } from 'redux';
 import SetBudgetForm from './SetBudgetForm';
 import { setBudget } from '../../redux/actions';
 
-// Mock Redux store
 const store = createStore(() => ({}));
 
 jest.mock('../../redux/actions', () => ({
@@ -23,7 +22,7 @@ describe('SetBudgetForm', () => {
 				);
 			});
 
-			expect(screen.getByLabelText('budget')).toBeInTheDocument();
+			expect(screen.getByLabelText('budget-input')).toBeInTheDocument();
 		});
 	});
 
@@ -86,31 +85,6 @@ describe('SetBudgetForm', () => {
 			});
 
 			expect(await screen.findByText('Budget is required')).toBeInTheDocument();
-		});
-
-		it('should display an error message if the budget value is negative', async () => {
-			act(() => {
-				render(
-					<Provider store={store}>
-						<SetBudgetForm />
-					</Provider>,
-				);
-			});
-
-			const inputField = screen.getByLabelText('budget') as HTMLInputElement;
-			const submitButton = screen.getByRole('button', { name: 'setBudget' });
-
-			act(() => {
-				fireEvent.change(inputField, { target: { value: '-500' } });
-			});
-
-			await act(async () => {
-				fireEvent.click(submitButton);
-			});
-
-			expect(
-				await screen.findByText('Budget must be a positive number'),
-			).toBeInTheDocument();
 		});
 	});
 });

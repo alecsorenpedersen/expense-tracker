@@ -36,6 +36,7 @@ const SetBudgetForm = () => {
 				}>
 				<Form>
 					<CurrencyField name='budget' label={t('budget')} />
+
 					<Button variant='contained' color='primary' fullWidth type='submit'>
 						{t('setBudget')}
 					</Button>

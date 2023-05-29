@@ -1,23 +1,30 @@
-import { MenuItem } from '@mui/material';
-import { Field } from 'formik';
-import { TextField } from 'formik-mui';
+import { MenuItem, TextField } from '@mui/material';
+import { useField } from 'formik';
 import { SelectFieldProps } from '../../../types';
 
-const SelectField = ({ name, label, items }: SelectFieldProps) => (
-	<Field
-		component={TextField}
-		select
-		fullWidth
-		name={name}
-		label={label}
-		variant='outlined'
-		margin='normal'>
-		{items.map((item: any) => (
-			<MenuItem value={item.value} key={item.value}>
-				{item.label}
-			</MenuItem>
-		))}
-	</Field>
-);
+const SelectField = ({ name, label, items }: SelectFieldProps) => {
+	const [field, meta] = useField(name);
+
+	return (
+		<TextField
+			select
+			fullWidth
+			name={name}
+			label={label}
+			variant='outlined'
+			margin='normal'
+			value={field.value}
+			onChange={field.onChange}
+			error={meta.touched && !!meta.error}
+			helperText={meta.touched ? meta.error : ''}
+			aria-label={`${label}-input`}>
+			{items.map((item) => (
+				<MenuItem key={item.value} value={item.value}>
+					{item.label}
+				</MenuItem>
+			))}
+		</TextField>
+	);
+};
 
 export default SelectField;

@@ -19,7 +19,7 @@ describe('CurrencyField component', () => {
 	it('renders with label and placeholder', () => {
 		render(<CurrencyField name='amount' label='Amount' />);
 
-		const labelElement = screen.getByLabelText(/Amount/i);
+		const labelElement = screen.getByLabelText(/Amount-input/i);
 		const inputElement = screen.getByPlaceholderText(
 			'£0.00',
 		) as HTMLInputElement;
