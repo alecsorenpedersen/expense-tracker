@@ -7,27 +7,11 @@ import { LayoutProps } from '../types';
 
 const Layout = ({ children, ...props }: LayoutProps) => {
 	return (
-		<>
-			<AppBar position='static'>
-				<Toolbar>
-					<Typography
-						variant='h5'
-						component='div'
-						sx={{ flexGrow: 1 }}
-						data-testid='app-title'>
-						{t('expenseTracker')}
-					</Typography>
-					<LanguageSwitcher data-testid='language-switcher' />
-					<Box sx={{ flexGrow: 1 }} />
-					<SignOutButton data-testid='sign-out-button' />
-				</Toolbar>
-			</AppBar>
-			<LayoutMain data-testid='layout-main' style={{ padding: '20px' }}>
-				<LayoutContainer data-testid='layout-container'>
-					{children}
-				</LayoutContainer>
-			</LayoutMain>
-		</>
+		<LayoutMain data-testid='layout-main' style={{ padding: '20px' }}>
+			<LayoutContainer data-testid='layout-container'>
+				{children}
+			</LayoutContainer>
+		</LayoutMain>
 	);
 };
 

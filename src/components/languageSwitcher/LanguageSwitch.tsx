@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 const languageOptions = [
@@ -12,21 +12,29 @@ const languageOptions = [
 const LanguageSwitcher = () => {
 	const { i18n } = useTranslation();
 
-	const handleChange = (event: ChangeEvent<{ value: unknown }>) => {
-		i18n.changeLanguage(event.target.value as string);
+	const handleChange = (event: SelectChangeEvent<string>) => {
+		i18n.changeLanguage(event.target.value);
 	};
 
 	return (
-		<select
-			data-testid='language-switcher'
+		<Select
+			variant='outlined'
 			value={i18n.language}
-			onChange={handleChange}>
+			onChange={handleChange}
+			style={{
+				color: '#333',
+				margin: '10px',
+				lineHeight: '2', // Adjust this to control the height
+				borderRadius: '5px',
+				backgroundColor: 'white',
+				height: '40px',
+			}}>
 			{languageOptions.map((option) => (
-				<option key={option.value} value={option.value}>
+				<MenuItem key={option.value} value={option.value}>
 					{option.label}
-				</option>
+				</MenuItem>
 			))}
-		</select>
+		</Select>
 	);
 };
 

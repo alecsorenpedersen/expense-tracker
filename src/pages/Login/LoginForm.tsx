@@ -4,9 +4,11 @@ import { TextField } from 'formik-mui';
 import { loginValidationSchema } from '../../schema/validation';
 import { LoginFormProps } from '../../types';
 import { useTranslation } from 'react-i18next';
-
+import { logIn } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 const LoginForm = ({ onSubmit }: LoginFormProps) => {
 	const { t } = useTranslation();
+	const dispatch = useDispatch();
 	return (
 		<Formik
 			initialValues={{
@@ -14,7 +16,11 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
 				password: '',
 			}}
 			validationSchema={loginValidationSchema}
-			onSubmit={onSubmit}>
+			onSubmit={(values, { setSubmitting }) => {
+				onSubmit(values);
+				dispatch(logIn());
+				setSubmitting(false);
+			}}>
 			{({ isSubmitting }) => (
 				<Form>
 					<Field
