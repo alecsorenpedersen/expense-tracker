@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Expense Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Expense Tracker app! This application is designed to simplify your personal finance management. Easily keep track of your expenses, set budgets, and visualize your transactions with our user-friendly dashboard. With this tool, you can keep an eye on your financial health in a more organized and efficient way.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Add Transactions**: Easily add your income and expenses, categorizing them for easier tracking.
+- **Set Budgets**: Define budgets for specific categories and ensure you're staying on top of your spending.
+- **Data Visualization**: Our app provides visually appealing and intuitive graphs to help you understand your financial trends better.
+- **Multi-language Support**: The application supports localization through i18next, making it more accessible to users around the world.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The application is built with React and is bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It uses various modern libraries and tools:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **State Management**: Redux for application-wide state management.
+- **Form Management**: Formik for effective form state handling and validations.
+- **Styling**: Emotion and Material-UI for styling and UI components.
+- **Date handling**: Date-fns and Material-UI Pickers for date manipulation and pickers.
+- **Data visualization**: ApexCharts and Recharts for providing interactive charts.
+- **Testing**: Cypress Jest along with Testing Library for testing the application.
+- **Type checking**: Typescript to provide static typing.
+- **Localization**: i18next for internationalization and localization.
 
-### `npm test`
+This project also follows best practices for code quality and maintainability with the help of ESLint.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+First, clone the repository to your local machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/your-username/expense-tracker.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Navigate to the project directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd expense-tracker`
+```
 
-### `npm run eject`
+Install the dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run the app in development mode:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Open [http://localhost:3000](http://localhost:3000) to view the application in your browser. The app will automatically reload if you make any changes to the code.
 
-## Learn More
+## Scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project supports the following scripts:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `npm start`: Runs the app in the development mode.
+- `npm test`: Launches the test runner in the interactive watch mode.
+- `npm run build`: Builds the app for production to the `build` folder.
+- `npm run eject`: Removes the single build dependency from your project.
+- `npx cypress run`: Runs the cypress tests in you terminal.
+- `npx cypress open`: Opens the cyress test in you.
+
+## Contributing
+
+Feel free to fork this repository, make some changes, and submit pull requests. This project is always open to contributions and suggestions to improve!
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
