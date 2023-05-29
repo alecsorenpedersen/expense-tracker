@@ -15,7 +15,8 @@ const SignOutButton = () => {
 			data-testid='sign-out-button'
 			variant='contained'
 			color='secondary'
-			onClick={handleSignOut}>
+			onClick={handleSignOut}
+			style={{ borderRadius: '20px', color: 'white' }}>
 			{t('signOut')}
 		</Button>
 	);

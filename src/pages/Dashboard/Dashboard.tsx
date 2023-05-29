@@ -12,7 +12,7 @@ const Dashboard = () => {
 	const { t } = useTranslation();
 	return (
 		<Layout>
-			<Grid container spacing={3} style={{ padding: '20px' }}>
+			<Grid container spacing={3} style={{ padding: '40px' }}>
 				<Grid item xs={12} md={12}>
 					<Header variant='h1' align='center' paddingBottom='-100px'>
 						{t('your-expenses-dashboard')}
