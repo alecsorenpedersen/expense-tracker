@@ -1,12 +1,7 @@
 import { MenuItem } from '@mui/material';
 import { Field } from 'formik';
 import { TextField } from 'formik-mui';
-
-interface SelectFieldProps {
-	name: string;
-	label: string;
-	items: { value: string; label: string }[];
-}
+import { SelectFieldProps } from '../../../types';
 
 const SelectField = ({ name, label, items }: SelectFieldProps) => (
 	<Field

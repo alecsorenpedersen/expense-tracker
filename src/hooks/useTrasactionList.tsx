@@ -27,7 +27,9 @@ const useExpenseList = () => {
 		{ id: 'value', label: t('amount'), minWidth: 50, align: 'left' },
 	];
 
-	const handleClickOpen = (record: AddRecordAction['payload']) => {
+	const handleClickOpen = (
+		record: AddRecordAction['payload'] & { type: 'expense' | 'income' },
+	) => {
 		setCurrentRecord(record);
 		setOpen(true);
 	};

@@ -7,6 +7,7 @@ import {
 	CurrencyFieldProps,
 	ChartWrapperProps,
 	RecordDetailDialogProps,
+	SelectFieldProps,
 } from '../types/types';
 
 export type {
@@ -18,4 +19,5 @@ export type {
 	CurrencyFieldProps,
 	ChartWrapperProps,
 	RecordDetailDialogProps,
+	SelectFieldProps,
 };

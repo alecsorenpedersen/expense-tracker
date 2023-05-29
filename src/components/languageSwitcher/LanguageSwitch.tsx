@@ -6,7 +6,6 @@ const languageOptions = [
 	{ value: 'es', label: 'Español 🇪🇸' },
 	{ value: 'fr', label: 'Français 🇫🇷' },
 	{ value: 'cs', label: 'Čeština 🇨🇿' },
-	// ...add more languages here
 ];
 
 const LanguageSwitcher = () => {
@@ -24,11 +23,12 @@ const LanguageSwitcher = () => {
 			style={{
 				color: '#333',
 				margin: '10px',
-				lineHeight: '2', // Adjust this to control the height
+				lineHeight: '2',
 				borderRadius: '5px',
 				backgroundColor: 'white',
 				height: '40px',
-			}}>
+			}}
+			data-testid='language-switcher'>
 			{languageOptions.map((option) => (
 				<MenuItem key={option.value} value={option.value}>
 					{option.label}

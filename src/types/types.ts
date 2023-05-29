@@ -51,3 +51,26 @@ export interface RecordDetailDialogProps {
 	record: AddRecordAction['payload'] | null;
 	onClose: () => void;
 }
+
+export interface SelectFieldProps {
+	name: string;
+	label: string;
+	items: { value: string; label: string }[];
+}
+
+export interface UseExpenseListResult {
+	records: Record[];
+	open: boolean;
+	currentRecord: AddRecordAction['payload'] | null;
+	columns: {
+		id: string;
+		label: string;
+		minWidth: number;
+		align: 'left' | 'right';
+	}[];
+	handleClickOpen: (
+		record: AddRecordAction['payload'] & { type: 'expense' | 'income' },
+	) => void;
+	handleClose: () => void;
+	exportToExcel: () => void;
+}

@@ -40,7 +40,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => {
 						label={t('password')}
 						variant='outlined'
 						type='password'
-						style={{ marginBottom: '20px' }} // spacing here
+						style={{ marginBottom: '20px' }}
 					/>
 					<ErrorMessage name='password' component='div' />
 					<Button

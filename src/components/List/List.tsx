@@ -17,19 +17,6 @@ import { useTranslation } from 'react-i18next';
 import { formatCurrency, formatDate } from '../../utils/utils';
 import useDashboard from '../../hooks/useForm';
 
-const StyledTableCell = styled(TableCell)`
-	cursor: pointer;
-	word-break: break-word;
-`;
-
-const ExpenseRow = styled(TableRow)`
-	background-color: #dd3333;
-`;
-
-const IncomeRow = styled(TableRow)`
-	background-color: #33dd5e;
-`;
-
 const ExpenseList = () => {
 	const { t } = useTranslation();
 	const { records } = useDashboard();

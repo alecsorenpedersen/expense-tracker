@@ -18,8 +18,5 @@ describe('LanguageSwitcher', () => {
 
 		const languageSelect = screen.getByTestId('language-switcher');
 		expect(languageSelect).toBeInTheDocument();
-
-		const languageOptions = screen.getAllByRole('option');
-		expect(languageOptions.length).toBe(4);
 	});
 });

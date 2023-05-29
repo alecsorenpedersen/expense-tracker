@@ -1,27 +1,29 @@
 import { render, fireEvent, screen } from '@testing-library/react';
-import { useNavigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import SignOutButton from './SignOutButton';
-
-jest.mock('react-i18next', () => ({
-	useTranslation: () => ({
-		t: jest.fn(),
-	}),
-}));
-
-jest.mock('react-router-dom', () => ({
-	useNavigate: jest.fn(),
-}));
+import rootReducer from '../../redux/reducers';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('SignOutButton', () => {
 	it('calls the navigate function with the correct URL on sign out', () => {
-		const navigate = jest.fn();
-		(useNavigate as jest.Mock).mockReturnValue(navigate);
+		const store = createStore(rootReducer, {
+			auth: {
+				isAuthenticated: true,
+			},
+		});
 
-		render(<SignOutButton />);
+		render(
+			<Provider store={store}>
+				<Router>
+					<SignOutButton />
+				</Router>
+			</Provider>,
+		);
 
 		const signOutButton = screen.getByTestId('sign-out-button');
 		fireEvent.click(signOutButton);
 
-		expect(navigate).toHaveBeenCalledWith('/');
+		expect(store.getState().auth.isAuthenticated).toBeFalsy();
 	});
 });
