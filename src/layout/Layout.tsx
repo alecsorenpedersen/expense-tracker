@@ -1,10 +1,10 @@
-import { Header, LayoutContainer, LayoutMain } from '../styles/theme';
+import { LayoutContainer, LayoutMain } from '../styles/theme';
 import { LayoutProps } from '../types';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import SignOutButton from '../components/SignOutButton.tsx/SignOutButton';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '../components/languageSwitcher/LanguageSwitch';
+import LanguageSwitcher from '../components/LanguageSwitcher/LanguageSwitch';
 
 const Layout = ({ children }: LayoutProps) => {
 	const { t } = useTranslation();

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Record } from '../types';
-import { RootState } from '../reducers';
+import { RootState } from '../redux/reducers';
 
 export const useBudgetGoal = () => {
 	return useSelector((state: RootState) => state.budget);

@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import { useField } from 'formik';
 import CurrencyInput from 'react-currency-input-field';
-import { CurrencyFieldProps } from '../../types';
+import { CurrencyFieldProps } from '../../../types';
 
 const CurrencyField = ({ name, label }: CurrencyFieldProps) => {
 	const [field, meta, helpers] = useField(name);

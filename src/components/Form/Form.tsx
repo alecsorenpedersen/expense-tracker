@@ -3,16 +3,15 @@ import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import { useDispatch } from 'react-redux';
 import { Title } from '../../styles/theme';
-import Card from '../Card/CardWrapper';
-import { addRecord } from '../../actions';
+import { addRecord } from '../../redux/actions';
 import { FormValues } from '../../types';
 import { recordValidationSchema } from '../../schema/validation';
 import 'react-datepicker/dist/react-datepicker.css';
-import CurrencyField from '../CurrencyField/CurrencyField';
+import CurrencyField from '../common/CurrencyField/CurrencyField';
 import { useTranslation } from 'react-i18next';
-import SelectField from '../SelectField/SelectField';
+import SelectField from '../common/SelectField/SelectField';
 import { INITIAL_VALUES } from './constants';
-import MainCard from '../Card/CardWrapper';
+import MainCard from '../common/Card/CardWrapper';
 
 const EntryForm = () => {
 	const { t } = useTranslation();
@@ -56,7 +55,6 @@ const EntryForm = () => {
 				onSubmit={onSubmit}>
 				<Form>
 					<Field
-						label={t('date')}
 						component={TextField}
 						type='date'
 						fullWidth

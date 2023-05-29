@@ -1,5 +1,5 @@
 import Chart from 'react-apexcharts';
-import MainCard from '../Card/CardWrapper';
+import MainCard from '../common/Card/CardWrapper';
 import { Title } from '../../styles/theme';
 import { ChartWrapperProps } from '../../types';
 

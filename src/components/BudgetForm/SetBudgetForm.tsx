@@ -2,10 +2,11 @@ import { Button } from '@mui/material';
 import { Formik, Form, FormikHelpers } from 'formik';
 import { useDispatch } from 'react-redux';
 import { Title } from '../../styles/theme';
-import { setBudget } from '../../actions';
+
 import { budgetValidationSchema } from '../../schema/validation';
-import CurrencyField from '../CurrencyField/CurrencyField';
+import CurrencyField from '../common/CurrencyField/CurrencyField';
 import { useTranslation } from 'react-i18next';
+import { setBudget } from '../../redux/actions';
 
 const initialValues = {
 	budget: '',

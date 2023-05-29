@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
-import Login from './components/Login/Login';
-import Dashboard from './components/Dashboard/Dashboard';
+import Login from './pages/Login/Login';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 describe('App', () => {
 	it('renders the Login component when the path is "/"', () => {

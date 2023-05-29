@@ -28,5 +28,7 @@
 	"login": "Přihlásit se",
 	"username": "Uživatelské Jméno",
 	"password": "Heslo",
-	"close": "Zavřít"
+	"close": "Zavřít",
+	"your-expenses-dashboard": "Váš Přehled Výdajů",
+	"remaining": "Zbývající"
 }

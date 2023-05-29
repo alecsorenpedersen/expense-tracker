@@ -7,7 +7,7 @@ import {
 	DialogTitle,
 	Typography,
 } from '@mui/material';
-import { AddRecordAction } from '../../actions';
+import { AddRecordAction } from '../../redux/actions';
 import { formatCurrency } from '../../utils/utils';
 import { RecordDetailDialogProps } from '../../types';
 import { useTranslation } from 'react-i18next';

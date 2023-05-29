@@ -1,6 +1,6 @@
 import { ApexOptions } from 'apexcharts';
 import { ReactNode } from 'react';
-import { AddRecordAction } from '../actions';
+import { AddRecordAction } from '../redux/actions';
 
 export interface LoginFormProps {
 	onSubmit: (values: { username: string; password: string }) => void;
@@ -22,10 +22,10 @@ export interface Record {
 	date: string;
 	info: string;
 	value: number;
-	type: string;
+	type: 'income' | 'expense';
 	category: string;
+	[key: string]: string | number;
 }
-
 export interface RootState {
 	records: Record[];
 }

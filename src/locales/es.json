@@ -28,5 +28,7 @@
 	"login": "Iniciar Sesión",
 	"username": "Nombre de Usuario",
 	"password": "Contraseña",
-	"close": "Cerrar"
+	"close": "Cerrar",
+	"your-expenses-dashboard": "Tu Panel de Gastos",
+	"remaining": "Restante"
 }

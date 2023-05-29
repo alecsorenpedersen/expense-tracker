@@ -28,5 +28,7 @@
 	"login": "Connexion",
 	"username": "Nom d'Utilisateur",
 	"password": "Mot de Passe",
-	"close": "Fermer"
+	"close": "Fermer",
+	"your-expenses-dashboard": "Votre Tableau de Dépenses",
+	"remaining": "Restant"
 }

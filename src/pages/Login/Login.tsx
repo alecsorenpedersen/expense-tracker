@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import { Title } from '../../styles/theme';
 import LoginForm from './LoginForm';
-import Card from '../Card/CardWrapper';
+import Card from '../../components/common/Card/CardWrapper';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 

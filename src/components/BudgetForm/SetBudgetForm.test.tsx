@@ -3,12 +3,12 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import SetBudgetForm from './SetBudgetForm';
-import { setBudget } from '../../actions';
+import { setBudget } from '../../redux/actions';
 
 // Mock Redux store
 const store = createStore(() => ({}));
 
-jest.mock('../../actions', () => ({
+jest.mock('../../redux/actions', () => ({
 	setBudget: jest.fn(),
 }));
 

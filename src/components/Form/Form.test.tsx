@@ -1,14 +1,12 @@
-import { render, screen, cleanup, fireEvent } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import rootReducer from '../../reducers';
+import rootReducer from '../../redux/reducers';
 import EntryForm from '../Form/Form';
-import userEvent from '@testing-library/user-event';
 
 const store = createStore(rootReducer);
 
-// Mock the translation function
 jest.mock('react-i18next', () => ({
 	useTranslation: () => ({
 		t: (str: any) => str,

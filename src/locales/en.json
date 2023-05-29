@@ -28,5 +28,7 @@
 	"login": "login",
 	"username": "Username",
 	"password": "Password",
-	"close": "Close"
+	"close": "Close",
+	"your-expenses-dashboard": "Your Expenses Dashboard",
+	"remaining": "Remaining"
 }
