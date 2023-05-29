@@ -4,9 +4,10 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import { t } from 'i18next';
 import SignOutButton from './components/SignOutButton.tsx/SignOutButton';
-import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitch';
+
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/reducers';
+import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitch';
 
 function App() {
 	const isAuthenticated = useSelector(
