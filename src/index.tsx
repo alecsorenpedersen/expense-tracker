@@ -42,8 +42,8 @@ ReactDOM.render(
 	<I18nextProvider i18n={i18n}>
 		<React.StrictMode>
 			<ThemeProvider theme={theme}>
-				<CssBaseline />
 				<Provider store={store}>
+					<CssBaseline />
 					<App />
 				</Provider>
 			</ThemeProvider>

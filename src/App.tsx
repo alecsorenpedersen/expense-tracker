@@ -19,9 +19,9 @@ function App() {
 						data-testid='app-title'>
 						{t('expenseTracker')}
 					</Typography>
-					<LanguageSwitcher />
+					<LanguageSwitcher data-testid='language-switcher' />
 					<Box sx={{ flexGrow: 1 }} />
-					<SignOutButton />
+					<SignOutButton data-testid='sign-out-button' />
 				</Toolbar>
 			</AppBar>
 			<Routes>

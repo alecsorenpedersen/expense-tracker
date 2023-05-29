@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from './Layout';
-import { useTranslation } from 'react-i18next';
 
 jest.mock('react-i18next', () => ({
 	useTranslation: () => ({
@@ -21,8 +20,9 @@ describe('Layout', () => {
 			</Router>,
 		);
 
+		expect(screen.getByTestId('layout-main')).toBeInTheDocument();
+		expect(screen.getByTestId('layout-container')).toBeInTheDocument();
 		expect(screen.getByText('Content')).toBeInTheDocument();
-		expect(screen.getByTestId('sign-out-button')).toBeInTheDocument();
 	});
 
 	it('renders the layout components with correct styling', () => {
@@ -46,29 +46,5 @@ describe('Layout', () => {
 			flexDirection: 'column',
 			width: '100%',
 		});
-	});
-
-	it('renders the language switcher component in the app bar', () => {
-		render(
-			<Router>
-				<Layout>
-					<div>Content</div>
-				</Layout>
-			</Router>,
-		);
-
-		expect(screen.getByTestId('language-switcher')).toBeInTheDocument();
-	});
-
-	it('renders the sign out button in the app bar', () => {
-		render(
-			<Router>
-				<Layout>
-					<div>Content</div>
-				</Layout>
-			</Router>,
-		);
-
-		expect(screen.getByTestId('sign-out-button')).toBeInTheDocument();
 	});
 });

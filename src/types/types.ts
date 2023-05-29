@@ -7,7 +7,7 @@ export interface LoginFormProps {
 }
 
 export type LayoutProps = {
-	children: React.ReactNode;
+	children?: ReactNode;
 };
 
 export interface FormValues {
@@ -31,7 +31,7 @@ export interface RootState {
 }
 
 export interface CardProps {
-	children: ReactNode;
+	children?: ReactNode;
 }
 
 export interface CurrencyFieldProps {

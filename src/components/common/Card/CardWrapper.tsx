@@ -2,9 +2,9 @@ import { CardContainer } from '../../../styles/theme';
 import { CardContent } from '@mui/material';
 import { CardProps } from '../../../types';
 
-const MainCard = ({ children, ...props }: CardProps) => {
+const MainCard = ({ children }: CardProps) => {
 	return (
-		<CardContainer {...props}>
+		<CardContainer>
 			<CardContent>{children}</CardContent>
 		</CardContainer>
 	);

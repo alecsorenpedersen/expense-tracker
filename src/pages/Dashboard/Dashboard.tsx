@@ -1,12 +1,19 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import EntryForm from '../../components/Form/Form';
 import ExpenseList from '../../components/List/List';
-import Layout from '../../layout/Layout';
+
 import SummaryChart from '../../components/Charts/SummaryChart';
 import CategoryPieChart from '../../components/Charts/CategoryChart';
 import BudgetTrackerChart from '../../components/Charts/BudgetTracker';
-import { Header } from '../../styles/theme';
+
 import { useTranslation } from 'react-i18next';
+import Layout from '../../layout/Layout';
+import styled from 'styled-components';
+
+export const Header = styled(Typography)({
+	align: 'center',
+	fontSize: '1.5rem',
+});
 
 const Dashboard = () => {
 	const { t } = useTranslation();
