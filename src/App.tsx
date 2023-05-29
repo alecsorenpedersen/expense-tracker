@@ -7,7 +7,7 @@ import SignOutButton from './components/SignOutButton.tsx/SignOutButton';
 
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/reducers';
-import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitch';
+import LanguageSwitcher from './components/LanguageSwitch/LanguageSwitch';
 
 function App() {
 	const isAuthenticated = useSelector(
