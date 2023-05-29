@@ -39,16 +39,16 @@ const store = createStore(rootReducer, persistedState);
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
 ReactDOM.render(
-	<I18nextProvider i18n={i18n}>
-		<React.StrictMode>
-			<ThemeProvider theme={theme}>
+	<React.StrictMode>
+		<ThemeProvider theme={theme}>
+			<I18nextProvider i18n={i18n}>
 				<Provider store={store}>
 					<CssBaseline />
 					<App />
 				</Provider>
-			</ThemeProvider>
-		</React.StrictMode>
-	</I18nextProvider>,
+			</I18nextProvider>
+		</ThemeProvider>
+	</React.StrictMode>,
 	document.getElementById('root'),
 );
 

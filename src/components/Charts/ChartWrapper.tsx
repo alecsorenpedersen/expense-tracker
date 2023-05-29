@@ -1,14 +1,16 @@
 import Chart from 'react-apexcharts';
-import MainCard from '../common/Card/CardWrapper';
 import { Title } from '../../styles/theme';
 import { ChartWrapperProps } from '../../types';
+import { Card, CardContent } from '@mui/material';
 
 const ChartWrapper = ({ options, series, type, title }: ChartWrapperProps) => {
 	return (
-		<MainCard>
-			<Title variant='h5'>{title}</Title>
-			<Chart options={options} series={series} type={type} />
-		</MainCard>
+		<Card>
+			<CardContent>
+				<Title variant='h5'>{title}</Title>
+				<Chart options={options} series={series} type={type} />
+			</CardContent>
+		</Card>
 	);
 };
 

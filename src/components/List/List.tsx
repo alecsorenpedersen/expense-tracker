@@ -7,9 +7,10 @@ import {
 	TableCell,
 	Button,
 	styled,
+	CardContent,
+	Card,
 } from '@mui/material';
 import { Title } from '../../styles/theme';
-import Card from '../common/Card/CardWrapper';
 import RecordDetailDialog from './ListModel';
 import useExpenseList from '../../hooks/useTrasactionList';
 import { useTranslation } from 'react-i18next';
@@ -41,56 +42,63 @@ const ExpenseList = () => {
 		handleClose,
 		exportToExcel,
 	} = useExpenseList();
-
 	return (
 		<Card data-testid='expense-list'>
-			<Title variant='h5'>{t('transactions')}</Title>
-			<Button onClick={exportToExcel}>Export to Excel</Button>
-			<TableContainer>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<StyledTableCell colSpan={columns.length}>
-								<Title>{t('moreInfo')}</Title>
-							</StyledTableCell>
-						</TableRow>
-						<TableRow>
-							{columns.map((column) => (
-								<StyledTableCell key={column.id}>
-									{column.label}
-								</StyledTableCell>
-							))}
-						</TableRow>
-					</TableHead>
+			<CardContent>
+				<Title variant='h5'>{t('transactions')}</Title>
+				<Button onClick={exportToExcel}>Export to Excel</Button>
+				<TableContainer>
+					<Table>
+						<TableHead>
+							<TableRow>
+								<TableCell colSpan={columns.length}>
+									<Title>{t('moreInfo')}</Title>
+								</TableCell>
+							</TableRow>
+							<TableRow>
+								{columns.map((column) => (
+									<TableCell key={column.id} style={{ alignItems: 'center' }}>
+										{column.label}
+									</TableCell>
+								))}
+							</TableRow>
+						</TableHead>
 
-					<TableBody>
-						{records.map((record: any, index: any) => {
-							const Row = record.type === 'income' ? IncomeRow : ExpenseRow;
-
-							return (
-								<Row
-									key={record.id || index}
+						<TableBody>
+							{records.map((record: any, index: any) => (
+								<TableRow
+									key={index}
+									sx={{
+										'&:last-child td, &:last-child th': { border: 0 },
+										backgroundColor:
+											record.type === 'income' ? '#33dd5e' : '#DD3333',
+										color: 'white',
+										cursor: 'pointer',
+										wordBreak: 'break-word',
+									}}
 									onClick={() => handleClickOpen(record)}>
 									{columns.map((column) => (
-										<StyledTableCell key={column.id}>
-											{column.id === 'value'
-												? formatCurrency(record[column.id])
-												: column.id === 'date'
-												? formatDate(record[column.id])
-												: record[column.id]}
-										</StyledTableCell>
+										<TableCell key={column.id}>
+											<span style={{ color: 'white' }}>
+												{column.id === 'value'
+													? formatCurrency(record[column.id])
+													: column.id === 'date'
+													? formatDate(record[column.id])
+													: record[column.id]}
+											</span>
+										</TableCell>
 									))}
-								</Row>
-							);
-						})}
-					</TableBody>
-				</Table>
-			</TableContainer>
-			<RecordDetailDialog
-				open={open}
-				record={currentRecord}
-				onClose={handleClose}
-			/>
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				</TableContainer>
+				<RecordDetailDialog
+					open={open}
+					record={currentRecord}
+					onClose={handleClose}
+				/>
+			</CardContent>
 		</Card>
 	);
 };

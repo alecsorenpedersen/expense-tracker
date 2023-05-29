@@ -31,7 +31,7 @@ export interface RootState {
 }
 
 export interface CardProps {
-	children?: ReactNode;
+	children: ReactNode;
 }
 
 export interface CurrencyFieldProps {

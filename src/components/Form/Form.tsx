@@ -1,4 +1,5 @@
-import { Button } from '@mui/material';
+import { Button, Card, CardContent } from '@mui/material';
+
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { TextField } from 'formik-mui';
 import { useDispatch } from 'react-redux';
@@ -11,7 +12,6 @@ import CurrencyField from '../common/CurrencyField/CurrencyField';
 import { useTranslation } from 'react-i18next';
 import SelectField from '../common/SelectField/SelectField';
 import { INITIAL_VALUES } from './constants';
-import MainCard from '../common/Card/CardWrapper';
 
 const EntryForm = () => {
 	const { t } = useTranslation();
@@ -47,48 +47,51 @@ const EntryForm = () => {
 	};
 
 	return (
-		<MainCard data-testid='entry-form'>
-			<Title variant='h5'>{t('newTransaction')}</Title>
-			<Formik
-				initialValues={INITIAL_VALUES}
-				validationSchema={recordValidationSchema}
-				onSubmit={onSubmit}>
-				<Form>
-					<Field
-						component={TextField}
-						type='date'
-						fullWidth
-						margin='normal'
-						variant='outlined'
-						name='date'
-					/>
-					<Field
-						component={TextField}
-						fullWidth
-						margin='normal'
-						label={t('description')}
-						variant='outlined'
-						name='info'
-					/>
-					<CurrencyField name='value' label='Amount' />
-					<SelectField
-						data-testid='type'
-						name='type'
-						label={t('type')}
-						items={TYPES}
-					/>
-					<SelectField
-						data-testid='category'
-						name='category'
-						label={t('category')}
-						items={CATEGORIES}
-					/>
-					<Button variant='contained' color='primary' fullWidth type='submit'>
-						{t('addTransaction')}
-					</Button>
-				</Form>
-			</Formik>
-		</MainCard>
+		<Card data-testid='entry-form'>
+			<CardContent>
+				<Title variant='h5'>{t('newTransaction')}</Title>
+				<Formik
+					initialValues={INITIAL_VALUES}
+					validationSchema={recordValidationSchema}
+					onSubmit={onSubmit}
+					data-testid='entry-form'>
+					<Form>
+						<Field
+							component={TextField}
+							type='date'
+							fullWidth
+							margin='normal'
+							variant='outlined'
+							name='date'
+						/>
+						<Field
+							component={TextField}
+							fullWidth
+							margin='normal'
+							label={t('description')}
+							variant='outlined'
+							name='info'
+						/>
+						<CurrencyField name='value' label='Amount' />
+						<SelectField
+							data-testid='type'
+							name='type'
+							label={t('type')}
+							items={TYPES}
+						/>
+						<SelectField
+							data-testid='category'
+							name='category'
+							label={t('category')}
+							items={CATEGORIES}
+						/>
+						<Button variant='contained' color='primary' fullWidth type='submit'>
+							{t('addTransaction')}
+						</Button>
+					</Form>
+				</Formik>
+			</CardContent>
+		</Card>
 	);
 };
 

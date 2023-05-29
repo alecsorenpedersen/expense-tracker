@@ -1,5 +1,4 @@
-import { Card, Typography, createTheme } from '@mui/material';
-import styled from 'styled-components';
+import { Card, Typography, createTheme, styled } from '@mui/material';
 
 export const theme = createTheme({
 	palette: {

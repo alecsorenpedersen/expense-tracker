@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, styled } from '@mui/material';
 import EntryForm from '../../components/Form/Form';
 import ExpenseList from '../../components/List/List';
 
@@ -8,7 +8,6 @@ import BudgetTrackerChart from '../../components/Charts/BudgetTracker';
 
 import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/Layout';
-import styled from 'styled-components';
 
 export const Header = styled(Typography)({
 	align: 'center',

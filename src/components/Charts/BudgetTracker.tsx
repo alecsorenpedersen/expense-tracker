@@ -3,10 +3,10 @@ import { Record } from '../../types';
 import Chart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { RootState } from '../../redux/reducers';
-import MainCard from '../common/Card/CardWrapper';
 import { Title } from '../../styles/theme';
 import SetBudgetForm from '../BudgetForm/SetBudgetForm';
 import { useTranslation } from 'react-i18next';
+import { Card, CardContent } from '@mui/material';
 
 const BudgetTrackerChart = () => {
 	const { t } = useTranslation();
@@ -56,16 +56,18 @@ const BudgetTrackerChart = () => {
 	};
 
 	return (
-		<MainCard data-testid='budget-tracker-chart'>
-			<Title variant='h5'>
-				{t('budget')}: £{budgetGoal}
-			</Title>
-			<Title variant='h5'>
-				{t('remaining')}: £{remainingBudget}
-			</Title>
-			<Chart options={options} series={series} type='radialBar' />
-			<SetBudgetForm />
-		</MainCard>
+		<Card data-testid='budget-tracker-chart'>
+			<CardContent>
+				<Title variant='h5'>
+					{t('budget')}: £{budgetGoal}
+				</Title>
+				<Title variant='h5'>
+					{t('remaining')}: £{remainingBudget}
+				</Title>
+				<Chart options={options} series={series} type='radialBar' />
+				<SetBudgetForm />
+			</CardContent>
+		</Card>
 	);
 };
 
