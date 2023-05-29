@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
 	Table,
 	TableBody,
@@ -7,65 +6,41 @@ import {
 	TableRow,
 	TableCell,
 	Button,
+	styled,
 } from '@mui/material';
-import { AddRecordAction } from '../../actions';
-import useDashboard from '../../hooks/useForm';
 import { Title } from '../../styles/theme';
-import Card from '../Card/CardWrapper';
+import Card from '../common/Card/CardWrapper';
 import RecordDetailDialog from './ListModel';
-import { formatCurrency, formatDate } from '../../utils/utils';
+import useExpenseList from '../../hooks/useTrasactionList';
 import { useTranslation } from 'react-i18next';
-import * as XLSX from 'xlsx';
-import { saveAs } from 'file-saver';
+import { formatCurrency, formatDate } from '../../utils/utils';
+import useDashboard from '../../hooks/useForm';
 
-// Detail fields for each record
-const detailFields = [
-	{ field: 'date', displayName: 'Date' },
-	{ field: 'info', displayName: 'Information' },
-	{ field: 'type', displayName: 'Type' },
-	{ field: 'value', displayName: 'Value' },
-	{ field: 'category', displayName: 'Category' },
-];
+const StyledTableCell = styled(TableCell)`
+	cursor: pointer;
+	word-break: break-word;
+`;
+
+const ExpenseRow = styled(TableRow)`
+	background-color: #dd3333;
+`;
+
+const IncomeRow = styled(TableRow)`
+	background-color: #33dd5e;
+`;
 
 const ExpenseList = () => {
 	const { t } = useTranslation();
 	const { records } = useDashboard();
-	const [open, setOpen] = useState(false);
-	const [currentRecord, setCurrentRecord] = useState<
-		AddRecordAction['payload'] | null
-	>(null);
 
-	const columns = [
-		{ id: 'date', label: t('date'), minWidth: 50, align: 'left' },
-		{ id: 'info', label: t('info'), minWidth: 100, align: 'left' },
-		{ id: 'value', label: t('amount'), minWidth: 50, align: 'left' },
-	];
-
-	const handleClickOpen = (record: AddRecordAction['payload']) => {
-		setCurrentRecord(record);
-		setOpen(true);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
-
-	const exportToExcel = () => {
-		const dataToDownload = records.map((record: any) => {
-			const updatedRecord = { ...record };
-			detailFields.forEach(({ field }) => {
-				updatedRecord[field] =
-					record[field as keyof AddRecordAction['payload']];
-			});
-			return updatedRecord;
-		});
-
-		const wb = XLSX.utils.book_new();
-		const ws = XLSX.utils.json_to_sheet(dataToDownload);
-		XLSX.utils.book_append_sheet(wb, ws, 'Records');
-		const buf = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-		saveAs(new Blob([buf]), 'records.xlsx');
-	};
+	const {
+		open,
+		currentRecord,
+		columns,
+		handleClickOpen,
+		handleClose,
+		exportToExcel,
+	} = useExpenseList();
 
 	return (
 		<Card data-testid='expense-list'>
@@ -75,45 +50,39 @@ const ExpenseList = () => {
 				<Table>
 					<TableHead>
 						<TableRow>
-							<TableCell colSpan={columns.length}>
+							<StyledTableCell colSpan={columns.length}>
 								<Title>{t('moreInfo')}</Title>
-							</TableCell>
+							</StyledTableCell>
 						</TableRow>
 						<TableRow>
 							{columns.map((column) => (
-								<TableCell key={column.id} style={{ alignItems: 'center' }}>
+								<StyledTableCell key={column.id}>
 									{column.label}
-								</TableCell>
+								</StyledTableCell>
 							))}
 						</TableRow>
 					</TableHead>
 
 					<TableBody>
-						{records.map((record: any, index: any) => (
-							<TableRow
-								key={index}
-								sx={{
-									'&:last-child td, &:last-child th': { border: 0 },
-									backgroundColor:
-										record.type === 'income' ? '#33dd5e' : '#DD3333',
-									color: 'white',
-									cursor: 'pointer',
-									wordBreak: 'break-word',
-								}}
-								onClick={() => handleClickOpen(record)}>
-								{columns.map((column) => (
-									<TableCell key={column.id}>
-										<span style={{ color: 'white' }}>
+						{records.map((record: any, index: any) => {
+							const Row = record.type === 'income' ? IncomeRow : ExpenseRow;
+
+							return (
+								<Row
+									key={record.id || index}
+									onClick={() => handleClickOpen(record)}>
+									{columns.map((column) => (
+										<StyledTableCell key={column.id}>
 											{column.id === 'value'
 												? formatCurrency(record[column.id])
 												: column.id === 'date'
 												? formatDate(record[column.id])
 												: record[column.id]}
-										</span>
-									</TableCell>
-								))}
-							</TableRow>
-						))}
+										</StyledTableCell>
+									))}
+								</Row>
+							);
+						})}
 					</TableBody>
 				</Table>
 			</TableContainer>
